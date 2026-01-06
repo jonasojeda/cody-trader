@@ -6,6 +6,7 @@ use App\Filament\Resources\LearningResource\Pages;
 use App\Filament\Resources\LearningResource\RelationManagers;
 use App\Models\Learning;
 use Filament\Forms;
+use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -31,9 +32,14 @@ class LearningResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('icon')
-                    ->label('Icono')
-                    ->required()
-                    ->maxLength(255),
+                    ->label('Ícono')
+                    ->helperText('Copia el nombre del ícono desde la web de Lucide.dev.')
+                    ->maxLength(255)
+                    ->suffixAction(
+                        Action::make('browse_icons')
+                            ->icon('heroicon-o-arrow-top-right-on-square')
+                            ->url('https://lucide.dev/icons/', shouldOpenInNewTab: true)
+                    )->required(),
                 Forms\Components\TagsInput::make('topics')
                     ->label('Temas')
                     ->required(),
