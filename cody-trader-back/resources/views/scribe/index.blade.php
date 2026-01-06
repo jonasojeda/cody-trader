@@ -79,6 +79,19 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-methodology" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="methodology">
+                    <a href="#methodology">Methodology</a>
+                </li>
+                                    <ul id="tocify-subheader-methodology" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="methodology-GETapi-methodologies">
+                                <a href="#methodology-GETapi-methodologies">Display a listing of the resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="methodology-GETapi-methodologies--id-">
+                                <a href="#methodology-GETapi-methodologies--id-">Obtener datos</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
             </div>
 
     <ul class="toc-footer" id="toc-footer">
@@ -465,8 +478,8 @@ access-control-allow-origin: *
         &quot;An&aacute;lisis multi-temporal&quot;,
         &quot;Identificaci&oacute;n de tendencias&quot;
     ],
-    &quot;created_at&quot;: &quot;2026-01-05T22:28:48.000000Z&quot;,
-    &quot;updated_at&quot;: &quot;2026-01-05T22:28:48.000000Z&quot;
+    &quot;created_at&quot;: &quot;2026-01-06T14:40:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2026-01-06T14:40:00.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -549,6 +562,450 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-learnings--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>ID del registro. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                <h1 id="methodology">Methodology</h1>
+
+    <p>Controlador para gestionar las metodologías.</p>
+
+                                <h2 id="methodology-GETapi-methodologies">Display a listing of the resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-methodologies">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/methodologies?nroPagina=1&amp;sinPaginar=1&amp;paginadoSimple=1&amp;ordenFechaCreado=DESC" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"nroPagina\": 4326.41688,
+    \"sinPaginar\": true,
+    \"paginadoSimple\": true,
+    \"ordenFechaCreado\": \"architecto\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/methodologies"
+);
+
+const params = {
+    "nroPagina": "1",
+    "sinPaginar": "1",
+    "paginadoSimple": "1",
+    "ordenFechaCreado": "DESC",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "nroPagina": 4326.41688,
+    "sinPaginar": true,
+    "paginadoSimple": true,
+    "ordenFechaCreado": "architecto"
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-methodologies">
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 57
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: {
+        &quot;ordenFechaCreado&quot;: [
+            &quot;validation.in&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-methodologies" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-methodologies"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-methodologies"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-methodologies" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-methodologies">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-methodologies" data-method="GET"
+      data-path="api/methodologies"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-methodologies', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-methodologies"
+                    onclick="tryItOut('GETapi-methodologies');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-methodologies"
+                    onclick="cancelTryOut('GETapi-methodologies');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-methodologies"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/methodologies</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-methodologies"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-methodologies"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>nroPagina</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="nroPagina"                data-endpoint="GETapi-methodologies"
+               value="1"
+               data-component="query">
+    <br>
+<p>Página a mostrar. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sinPaginar</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-methodologies" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="1"
+                   data-endpoint="GETapi-methodologies"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-methodologies" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="0"
+                   data-endpoint="GETapi-methodologies"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Para evitar la paginación y devolver todos los registros. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>paginadoSimple</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-methodologies" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="1"
+                   data-endpoint="GETapi-methodologies"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-methodologies" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="0"
+                   data-endpoint="GETapi-methodologies"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Para realizar un paginado simple con anterior/siguiente, eficiente cuando se manejan muchos datos. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ordenFechaCreado</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="ordenFechaCreado"                data-endpoint="GETapi-methodologies"
+               value="DESC"
+               data-component="query">
+    <br>
+<p>Ordenar por fecha de creación. Valores posibles: ASC, DESC. Example: <code>DESC</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>nroPagina</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="nroPagina"                data-endpoint="GETapi-methodologies"
+               value="4326.41688"
+               data-component="body">
+    <br>
+<p>Example: <code>4326.41688</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>sinPaginar</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-methodologies" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="true"
+                   data-endpoint="GETapi-methodologies"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-methodologies" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="false"
+                   data-endpoint="GETapi-methodologies"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>paginadoSimple</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-methodologies" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="true"
+                   data-endpoint="GETapi-methodologies"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-methodologies" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="false"
+                   data-endpoint="GETapi-methodologies"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ordenFechaCreado</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="ordenFechaCreado"                data-endpoint="GETapi-methodologies"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+        </form>
+
+                    <h2 id="methodology-GETapi-methodologies--id-">Obtener datos</h2>
+
+<p>
+</p>
+
+<p>Obtener datos de un registro</p>
+
+<span id="example-requests-GETapi-methodologies--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/methodologies/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/methodologies/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-methodologies--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 56
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 1,
+    &quot;icon&quot;: &quot;ambulance&quot;,
+    &quot;title&quot;: &quot;Reglas claras&quot;,
+    &quot;description&quot;: &quot;Sistema de trading con entradas y salidas definidas. Sin ambig&uuml;edades ni interpretaciones subjetivas.&quot;,
+    &quot;created_at&quot;: &quot;2026-01-06T14:40:00.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2026-01-06T15:26:15.000000Z&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-methodologies--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-methodologies--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-methodologies--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-methodologies--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-methodologies--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-methodologies--id-" data-method="GET"
+      data-path="api/methodologies/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-methodologies--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-methodologies--id-"
+                    onclick="tryItOut('GETapi-methodologies--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-methodologies--id-"
+                    onclick="cancelTryOut('GETapi-methodologies--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-methodologies--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/methodologies/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-methodologies--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-methodologies--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-methodologies--id-"
                value="1"
                data-component="url">
     <br>
