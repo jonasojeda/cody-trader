@@ -20,6 +20,9 @@ class MethodologyResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
 
+    protected static ?string $modelLabel = 'Metodología';
+    protected static ?string $pluralModelLabel = 'Metodologías';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -61,10 +64,12 @@ class MethodologyResource extends Resource
                     ->limit(50)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Creado el')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Actualizado el')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
