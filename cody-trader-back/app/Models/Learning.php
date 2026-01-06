@@ -18,4 +18,14 @@ class Learning extends Model
     protected $casts = [
         'topics' => 'array',
     ];
+
+    public function obtenerDatos()
+    {
+        [
+            'id' => $this->id,
+            'icon' => $this->icon,
+            'title' => $this->title,
+            'topics' => $this->topics,
+        ];
+    }
 }

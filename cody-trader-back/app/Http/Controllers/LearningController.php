@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * @group
+ * Learning
+ *
+ * Controlador para gestionar los recursos de aprendizaje.
+ */
 class LearningController extends Controller
 {
     /**
@@ -77,51 +83,39 @@ class LearningController extends Controller
         ], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    // /**
+    //  * Store a newly created resource in storage.
+    //  */
+    // public function store(Request $request)
+    // {
+    //     //
+    // }
 
     /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
+     * Obtener datos
+     *
+     * Obtener datos de un registro
+     *
+     * @urlParam id int required ID del registro. Example: 1
      */
     public function show(Learning $learning)
     {
-        //
+        return response()->json($learning, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Learning $learning)
-    {
-        //
-    }
+    // /**
+    //  * Update the specified resource in storage.
+    //  */
+    // public function update(Request $request, Learning $learning)
+    // {
+    //     //
+    // }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Learning $learning)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Learning $learning)
-    {
-        //
-    }
+    // /**
+    //  * Remove the specified resource from storage.
+    //  */
+    // public function destroy(Learning $learning)
+    // {
+    //     //
+    // }
 }
