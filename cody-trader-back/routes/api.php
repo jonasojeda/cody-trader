@@ -18,4 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::apiResource('learnings', App\Http\Controllers\LearningController::class);
+Route::apiResource('learnings', App\Http\Controllers\LearningController::class)
+    ->only(['index', 'show'])
+    ->parameter('learnings', 'learning');
+
+Route::apiResource('methodologies', App\Http\Controllers\MethodologyController::class)
+    ->only(['index', 'show'])
+    ->parameter('methodologies', 'methodology');
