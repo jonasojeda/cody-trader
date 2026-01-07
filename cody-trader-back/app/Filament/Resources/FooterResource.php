@@ -64,23 +64,23 @@ class FooterResource extends Resource
                             ->schema([
                                 Forms\Components\TextInput::make('name')
                                     ->label('Nombre')
-                                    ->disabled()
+                                    ->readOnly()
                                     ->required(),
                                 Forms\Components\TextInput::make('url')
                                     ->label('URL')
                                     ->required(),
-                                Forms\Components\ColorPicker::make('color')
-                                    ->label('Color'),
-                                Forms\Components\TextInput::make('icon')
-                                    ->label('Ícono')
-                                    ->disabled()
-                                    // ->helperText('Nombre del ícono en Lucide.dev')
-                                    // ->suffixAction(
-                                    //     Action::make('browse_icons')
-                                    //         ->icon('heroicon-o-arrow-top-right-on-square')
-                                    //         ->url('https://lucide.dev/icons/', shouldOpenInNewTab: true)
-                                    // )
-                                    ->required(),
+                                // Forms\Components\ColorPicker::make('color')
+                                //     ->label('Color'),
+                                // Forms\Components\TextInput::make('icon')
+                                //     ->label('Ícono')
+                                //     ->readOnly()
+                                // ->helperText('Nombre del ícono en Lucide.dev')
+                                // ->suffixAction(
+                                //     Action::make('browse_icons')
+                                //         ->icon('heroicon-o-arrow-top-right-on-square')
+                                //         ->url('https://lucide.dev/icons/', shouldOpenInNewTab: true)
+                                // )
+                                // ->required(),
                                 Forms\Components\Toggle::make('active')
                                     ->label('Activo')
                                     ->default(true),
