@@ -159,6 +159,16 @@ export interface Methodology {
   updated_at: string;
 }
 
+export interface Instructor {
+  id: number;
+  name: string;
+  role: string;
+  experience: string;
+  specialty: string;
+  achievements: string[];
+  image: string | null;
+}
+
 interface PaginatedResponse<T> {
   data: T[];
   current_page: number;
@@ -197,6 +207,10 @@ export const api = {
     fetchApi<PaginatedResponse<Learning>>("learnings", { sinPaginar: true }),
   getMethodologies: () =>
     fetchApi<PaginatedResponse<Methodology>>("methodologies", {
+      sinPaginar: true,
+    }),
+  getInstructors: () =>
+    fetchApi<PaginatedResponse<Instructor>>("instructors", {
       sinPaginar: true,
     }),
 };
