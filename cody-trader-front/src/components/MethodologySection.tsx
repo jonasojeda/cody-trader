@@ -84,7 +84,7 @@ export const MethodologySection = () => {
         </div>
 
         {/* Stats bar */}
-        <div className="mt-16 card-elevated rounded-2xl p-8 border border-border/50">
+        {/* <div className="mt-16 card-elevated rounded-2xl p-8 border border-border/50">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <p className="text-4xl md:text-5xl font-display font-bold text-primary mb-2">
@@ -111,7 +111,7 @@ export const MethodologySection = () => {
               <p className="text-muted-foreground">Riesgo máximo por op.</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
