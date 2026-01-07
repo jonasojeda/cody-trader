@@ -29,3 +29,7 @@ Route::apiResource('methodologies', App\Http\Controllers\MethodologyController::
 Route::apiResource('footers', App\Http\Controllers\FooterController::class)
     ->only(['index', 'show'])
     ->parameter('footers', 'footer');
+
+Route::apiResource('instructors', App\Http\Controllers\InstructorController::class)
+    ->only(['index', 'show'])
+    ->parameter('instructors', 'instructor');
