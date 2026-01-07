@@ -71,7 +71,7 @@ class InstructorController extends Controller
         $listaDevolver = collect();
         if ($listaBD) {
             foreach ($listaBD as $item) {
-                $listaDevolver->push($item);
+                $listaDevolver->push($item->obtenerDatos());
             }
         }
 
@@ -101,7 +101,7 @@ class InstructorController extends Controller
      */
     public function show(Instructor $instructor)
     {
-        return response()->json($instructor, 200);
+        return response()->json($instructor->obtenerDatos(), 200);
     }
 
 

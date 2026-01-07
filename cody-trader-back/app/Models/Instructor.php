@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Instructor extends Model
 {
@@ -31,7 +32,7 @@ class Instructor extends Model
             'experience' => $this->experience,
             'specialty' => $this->specialty,
             'achievements' => $this->achievements,
-            'image' => $this->image,
+            'image' => $this->image ? Storage::url($this->image) : null,
         ];
     }
 }
