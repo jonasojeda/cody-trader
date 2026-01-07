@@ -28,8 +28,11 @@ class InstructorResource extends Resource
                         Forms\Components\FileUpload::make('image')
                             ->label('Imagen')
                             ->image()
-                            ->maxSize(2048)
+                            // ->maxSize(2048)
                             ->disk('public')
+                            ->optimize('webp')
+                            ->resize(50)
+                            ->openable()
                             ->directory('instructors')
                             ->imageEditor()
                             ->columnSpanFull(),
