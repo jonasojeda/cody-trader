@@ -1,9 +1,18 @@
 import { useState } from "react";
 import { TrendingUp, Mail, Shield } from "lucide-react";
 import teralLogo from "@/assets/teral-logo.png";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "@/lib/api";
 
 export const Footer = () => {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+
+  const { data: footerResponse } = useQuery({
+    queryKey: ["footers"],
+    queryFn: api.getFooters,
+  });
+
+  const footerData = footerResponse?.data?.[0];
 
   const TelegramIcon = () => (
     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
@@ -35,45 +44,17 @@ export const Footer = () => {
     </svg>
   );
 
-  const socialLinks = [
-    {
-      name: "Telegram",
-      href: "https://t.me/",
-      color: "#229ED9",
-      Icon: TelegramIcon,
-      show: true,
-    },
-    {
-      name: "WhatsApp",
-      href: "https://wa.me/",
-      color: "#25D366",
-      Icon: WhatsAppIcon,
-      show: true,
-    },
-    {
-      name: "Facebook",
-      href: "https://facebook.com/",
-      color: "#1877F2",
-      Icon: FacebookIcon,
-      show: true,
-    },
-    {
-      name: "X (Twitter)",
-      href: "https://x.com/",
-      color: "#ffffff",
-      Icon: XIcon,
-      show: true,
-    },
-    {
-      name: "Instagram",
-      href: "https://instagram.com/",
-      color: "#E4405F",
-      Icon: InstagramIcon,
-      show: true, // Ejemplo: este ícono no se mostrará
-    },
-  ];
+  const iconMap: Record<string, () => JSX.Element> = {
+    Telegram: TelegramIcon,
+    WhatsApp: WhatsAppIcon,
+    Facebook: FacebookIcon,
+    "X (Twitter)": XIcon,
+    Instagram: InstagramIcon,
+  };
 
   const currentYear = new Date().getFullYear();
+
+  if (!footerData) return null;
 
   return (
     <footer className="relative py-16 border-t border-border">
@@ -86,12 +67,11 @@ export const Footer = () => {
                 <TrendingUp className="h-5 w-5 text-primary" />
               </div>
               <span className="font-display font-bold text-lg">
-                Academia Cody Trader
+                {footerData.brand_name}
               </span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Formación profesional en mercados financieros. Metodología basada
-              en datos y gestión de riesgo.
+              {footerData.brand_description}
             </p>
           </div>
 
@@ -101,30 +81,16 @@ export const Footer = () => {
               Navegación
             </h4>
             <ul className="space-y-2">
-              <li>
-                <a
-                  href="#metodologia"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Metodología
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#aprenderas"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Programa
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#autoridad"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Credenciales
-                </a>
-              </li>
+              {footerData.navigation_links.map((link) => (
+                <li key={link.url}>
+                  <a
+                    href={link.url}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -135,39 +101,43 @@ export const Footer = () => {
             </h4>
             <div className="space-y-3">
               <a
-                href="mailto:contacto@academiacodytrader.com"
+                href={`mailto:${footerData.contact_email}`}
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 <Mail className="h-4 w-4" />
-                contacto@academiacodytrader.com
+                {footerData.contact_email}
               </a>
 
               {/* Social Media */}
               <div className="flex items-center gap-3 pt-2">
-                {socialLinks
-                  .filter((link) => link.show)
-                  .map((link) => (
-                    <a
-                      key={link.name}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onMouseEnter={() => setHoveredLink(link.name)}
-                      onMouseLeave={() => setHoveredLink(null)}
-                      className="w-8 h-8 rounded-lg bg-muted/50 flex items-center justify-center text-muted-foreground transition-colors"
-                      style={{
-                        color:
-                          hoveredLink === link.name ? link.color : undefined,
-                        backgroundColor:
-                          hoveredLink === link.name
-                            ? `${link.color}1A`
-                            : undefined,
-                      }}
-                      aria-label={link.name}
-                    >
-                      <link.Icon />
-                    </a>
-                  ))}
+                {footerData.social_links
+                  .filter((link) => link.active)
+                  .map((link) => {
+                    const Icon = iconMap[link.name];
+                    if (!Icon) return null;
+                    return (
+                      <a
+                        key={link.name}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onMouseEnter={() => setHoveredLink(link.name)}
+                        onMouseLeave={() => setHoveredLink(null)}
+                        className="w-8 h-8 rounded-lg bg-muted/50 flex items-center justify-center text-muted-foreground transition-colors"
+                        style={{
+                          color:
+                            hoveredLink === link.name ? link.color : undefined,
+                          backgroundColor:
+                            hoveredLink === link.name
+                              ? `${link.color}1A`
+                              : undefined,
+                        }}
+                        aria-label={link.name}
+                      >
+                        <Icon />
+                      </a>
+                    );
+                  })}
               </div>
             </div>
           </div>
@@ -178,11 +148,14 @@ export const Footer = () => {
           <div className="flex items-start gap-3 text-xs text-muted-foreground">
             <Shield className="h-4 w-4 shrink-0 mt-0.5" />
             <p className="leading-relaxed">
-              <strong>Aviso de riesgo:</strong> El trading en mercados
-              financieros implica riesgos significativos de pérdida. Los
-              resultados pasados no garantizan resultados futuros. Este programa
-              es estrictamente educativo y no constituye asesoría de inversión.
-              Opera únicamente con capital que puedas permitirte perder.
+              {footerData.risk_disclaimer.includes("Aviso de riesgo:") ? (
+                <>
+                  <strong>Aviso de riesgo:</strong>{" "}
+                  {footerData.risk_disclaimer.replace("Aviso de riesgo:", "")}
+                </>
+              ) : (
+                footerData.risk_disclaimer
+              )}
             </p>
           </div>
         </div>
@@ -190,7 +163,7 @@ export const Footer = () => {
         {/* Copyright & Powered by */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Academia Cody Trader. Todos los derechos reservados.
+            © {currentYear} {footerData.copyright_text}
           </p>
           <div className="flex items-center gap-2">
             <span className="text-xs text-muted-foreground">Powered by</span>

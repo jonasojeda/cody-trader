@@ -120,12 +120,25 @@ export interface WorkPlan {
   is_active: number;
 }
 
-export interface FooterInfo {
+export interface Footer {
   id: number;
-  logo_path: string;
-  email: string;
-  copyright: string;
-  social_links: string;
+  brand_name: string;
+  brand_description: string;
+  contact_email: string;
+  social_links: {
+    url: string;
+    name: string;
+    color: string;
+    active: boolean;
+  }[];
+  navigation_links: {
+    url: string;
+    label: string;
+  }[];
+  risk_disclaimer: string;
+  copyright_text: string;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface Learning {
@@ -178,10 +191,12 @@ export const api = {
     fetchApi<PaginatedResponse<Feature>>("features", { sinPaginar: true }),
   getWorkPlans: () =>
     fetchApi<PaginatedResponse<WorkPlan>>("workPlan", { sinPaginar: true }),
-  getFooterInfo: () =>
-    fetchApi<PaginatedResponse<FooterInfo>>("footerInfo", { sinPaginar: true }),
+  getFooters: () =>
+    fetchApi<PaginatedResponse<Footer>>("footers", { sinPaginar: true }),
   getLearnings: () =>
     fetchApi<PaginatedResponse<Learning>>("learnings", { sinPaginar: true }),
   getMethodologies: () =>
-    fetchApi<PaginatedResponse<Methodology>>("methodologies", { sinPaginar: true }),
+    fetchApi<PaginatedResponse<Methodology>>("methodologies", {
+      sinPaginar: true,
+    }),
 };
