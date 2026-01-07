@@ -159,6 +159,14 @@ export interface Methodology {
   updated_at: string;
 }
 
+export interface Credential {
+  id: number;
+  icon: string;
+  value: string;
+  label: string;
+  description: string;
+}
+
 export interface Instructor {
   id: number;
   name: string;
@@ -211,6 +219,10 @@ export const api = {
     }),
   getInstructors: () =>
     fetchApi<PaginatedResponse<Instructor>>("instructors", {
+      sinPaginar: true,
+    }),
+  getCredentials: () =>
+    fetchApi<PaginatedResponse<Credential>>("credentials", {
       sinPaginar: true,
     }),
 };
