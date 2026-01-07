@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use COM;
 use Illuminate\Database\Seeder;
 use Mockery\Generator\Method;
 
@@ -19,6 +21,7 @@ class DatabaseSeeder extends Seeder
             MethodologySeeder::class,
             FooterSeeder::class,
             InstructorSeeder::class,
+            CredentialSeeder::class,
         ]);
     }
 }

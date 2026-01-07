@@ -33,3 +33,7 @@ Route::apiResource('footers', App\Http\Controllers\FooterController::class)
 Route::apiResource('instructors', App\Http\Controllers\InstructorController::class)
     ->only(['index', 'show'])
     ->parameter('instructors', 'instructor');
+
+Route::apiResource('credentials', App\Http\Controllers\CredentialController::class)
+    ->only(['index', 'show'])
+    ->parameter('credentials', 'credential');
