@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { TrendingUp, Menu, X } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface HeaderProps {
   onOpenCart: () => void;
@@ -65,8 +66,9 @@ export const Header = ({ onOpenCart }: HeaderProps) => {
             </button>
           </nav>
           
-          {/* CTA Button */}
-          <div className="flex items-center gap-4">
+          {/* CTA Button & Theme Toggle */}
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
             <Button 
               onClick={onOpenCart}
               className="hidden sm:flex glow-green"
