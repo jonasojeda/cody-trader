@@ -1,13 +1,25 @@
 import { Dialog, DialogContent } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { CheckCircle2, Home, Mail, MessageSquare } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "@/lib/api";
 
 interface ConfirmationModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export const ConfirmationModal = ({ isOpen, onClose }: ConfirmationModalProps) => {
+export const ConfirmationModal = ({
+  isOpen,
+  onClose,
+}: ConfirmationModalProps) => {
+  const { data: footerResponse } = useQuery({
+    queryKey: ["footers"],
+    queryFn: api.getFooters,
+  });
+
+  const contactEmail = footerResponse?.data?.[0]?.contact_email;
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md bg-card border-border text-center">
@@ -19,21 +31,23 @@ export const ConfirmationModal = ({ isOpen, onClose }: ConfirmationModalProps) =
               <CheckCircle2 className="h-10 w-10 text-primary" />
             </div>
           </div>
-          
+
           <div className="space-y-3">
             <h2 className="font-display font-bold text-2xl text-foreground">
               ¡Bienvenido/a al programa!
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              Hemos recibido tu solicitud correctamente. En breve uno de nuestros 
-              asesores se comunicará contigo para coordinar el pago y confirmar 
-              tu admisión al programa.
+              Hemos recibido tu solicitud correctamente. En breve uno de
+              nuestros asesores se comunicará contigo para coordinar el pago y
+              confirmar tu admisión al programa.
             </p>
           </div>
-          
+
           {/* Next steps */}
           <div className="card-elevated rounded-xl p-4 text-left">
-            <p className="text-sm font-medium text-foreground mb-3">Próximos pasos:</p>
+            <p className="text-sm font-medium text-foreground mb-3">
+              Próximos pasos:
+            </p>
             <ul className="space-y-2">
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 text-secondary shrink-0" />
@@ -45,9 +59,9 @@ export const ConfirmationModal = ({ isOpen, onClose }: ConfirmationModalProps) =
               </li>
             </ul>
           </div>
-          
+
           <div className="pt-2">
-            <Button 
+            <Button
               onClick={onClose}
               variant="outline"
               className="w-full border-border hover:border-primary hover:text-primary transition-all"
@@ -56,9 +70,10 @@ export const ConfirmationModal = ({ isOpen, onClose }: ConfirmationModalProps) =
               Volver al inicio
             </Button>
           </div>
-          
+
           <p className="text-xs text-muted-foreground">
-            ¿Dudas? Contáctanos en soporte@academiacodytrader.com
+            ¿Dudas? Contáctanos en{" "}
+            {contactEmail || "soporte@academiacodytrader.com"}
           </p>
         </div>
       </DialogContent>
