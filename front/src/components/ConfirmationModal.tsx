@@ -2,7 +2,7 @@ import { Dialog, DialogContent } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { CheckCircle2, Home, Mail, MessageSquare } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { api } from "@/lib/api";
+import { api } from "../lib/api";
 
 interface ConfirmationModalProps {
   isOpen: boolean;
