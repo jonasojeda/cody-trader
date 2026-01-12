@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             FooterSeeder::class,
             InstructorSeeder::class,
             CredentialSeeder::class,
+            SlideSeeder::class,
         ]);
     }
 }

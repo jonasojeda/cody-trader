@@ -37,3 +37,7 @@ Route::apiResource('instructors', App\Http\Controllers\InstructorController::cla
 Route::apiResource('credentials', App\Http\Controllers\CredentialController::class)
     ->only(['index', 'show'])
     ->parameter('credentials', 'credential');
+
+Route::apiResource('slides', App\Http\Controllers\SlideController::class)
+    ->only(['index', 'show'])
+    ->parameter('slides', 'slide');
