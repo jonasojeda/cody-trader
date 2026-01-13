@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Slide extends Model
 {
@@ -47,7 +48,7 @@ class Slide extends Model
             'primary_btn_link' => $this->primary_btn_link,
             'secondary_btn_text' => $this->secondary_btn_text,
             'secondary_btn_link' => $this->secondary_btn_link,
-            'image' => $this->image,
+            'image' => $this->image ? Storage::url($this->image) : null,
             'floating_card_title' => $this->floating_card_title,
             'floating_card_description' => $this->floating_card_description,
             'floating_card_icon' => $this->floating_card_icon,
