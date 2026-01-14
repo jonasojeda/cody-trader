@@ -1,5 +1,6 @@
 import { Button } from "./ui/button";
-import { TrendingUp, Shield, BarChart3, Target, BookOpen, Users, LucideIcon } from "lucide-react";
+import * as LucideIcons from "lucide-react";
+import { api, Slide } from "../lib/api";
 import {
   Carousel,
   CarouselContent,
@@ -15,93 +16,40 @@ interface HeroSectionProps {
   onOpenCart: () => void;
 }
 
-interface SlideData {
-  title: string;
-  highlight: string;
-  tag: string;
-  description: string;
-  primary_btn_text: string;
-  primary_btn_link: string;
-  secondary_btn_text: string;
-  secondary_btn_link: string;
-  image: string;
-  floating_card_title: string;
-  floating_card_description: string;
-  floating_card_icon: LucideIcon;
-  indicators: { icon: LucideIcon; text: string; color: string }[];
-}
-
-const slides: SlideData[] = [
-  {
-    title: "Aprende trading con una metodología",
-    highlight: "profesional, medible y basada en datos",
-    tag: "Metodología profesional verificable",
-    description: "Formación real en mercados financieros, gestión de riesgo y toma de decisiones. Sin promesas falsas, solo resultados documentados.",
-    primary_btn_text: "Acceder al programa",
-    primary_btn_link: "#cart",
-    secondary_btn_text: "Ver metodología",
-    secondary_btn_link: "#metodologia",
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop",
-    floating_card_title: "+340 ops",
-    floating_card_description: "Backtesting",
-    floating_card_icon: BarChart3,
-    indicators: [
-      { icon: Shield, text: "Gestión de riesgo", color: "text-primary" },
-      { icon: BarChart3, text: "Resultados auditables", color: "text-secondary" },
-    ],
-  },
-  {
-    title: "Domina los mercados con estrategias",
-    highlight: "probadas y backtesting real",
-    tag: "Estrategias comprobadas",
-    description: "Más de 340 operaciones documentadas con resultados verificables. Aprende de datos reales, no de teorías sin fundamento.",
-    primary_btn_text: "Comenzar ahora",
-    primary_btn_link: "#cart",
-    secondary_btn_text: "Ver resultados",
-    secondary_btn_link: "#autoridad",
-    image: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?q=80&w=2070&auto=format&fit=crop",
-    floating_card_title: "87%",
-    floating_card_description: "Win Rate",
-    floating_card_icon: Target,
-    indicators: [
-      { icon: Target, text: "87% Win Rate", color: "text-primary" },
-      { icon: TrendingUp, text: "+18% Mensual", color: "text-secondary" },
-    ],
-  },
-  {
-    title: "Desarrolla una mentalidad de trader",
-    highlight: "profesional y disciplinado",
-    tag: "Formación integral",
-    description: "Psicología del trading, control emocional y disciplina operativa. Los pilares que separan a los traders exitosos del resto.",
-    primary_btn_text: "Unirme ahora",
-    primary_btn_link: "#cart",
-    secondary_btn_text: "Conocer instructores",
-    secondary_btn_link: "#instructores",
-    image: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=2071&auto=format&fit=crop",
-    floating_card_title: "+1.2K",
-    floating_card_description: "Estudiantes",
-    floating_card_icon: Users,
-    indicators: [
-      { icon: BookOpen, text: "Programa completo", color: "text-primary" },
-      { icon: Users, text: "Mentoría directa", color: "text-secondary" },
-    ],
-  },
-];
-
 export const HeroSection = ({ onOpenCart }: HeroSectionProps) => {
   const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
-  const [api, setApi] = useState<CarouselApi>();
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [slides, setSlides] = useState<Slide[]>([]);
 
   useEffect(() => {
-    if (!api) return;
+    const fetchSlides = async () => {
+      try {
+        const response = await api.getSlides();
+        if (response && response.data) {
+          setSlides(response.data);
+        }
+      } catch (error) {
+        console.error("Error fetching slides:", error);
+      }
+    };
+    fetchSlides();
+  }, []);
 
-    setCurrentSlide(api.selectedScrollSnap());
+  const getIcon = (name: string) => {
+    const Icon = (LucideIcons as any)[name];
+    return Icon || LucideIcons.HelpCircle;
+  };
 
-    api.on("select", () => {
-      setCurrentSlide(api.selectedScrollSnap());
+  useEffect(() => {
+    if (!carouselApi) return;
+
+    setCurrentSlide(carouselApi.selectedScrollSnap());
+
+    carouselApi.on("select", () => {
+      setCurrentSlide(carouselApi.selectedScrollSnap());
     });
-  }, [api]);
+  }, [carouselApi]);
 
   const handlePrimaryClick = (link: string) => {
     if (link === "#cart") {
@@ -120,7 +68,7 @@ export const HeroSection = ({ onOpenCart }: HeroSectionProps) => {
       <Carousel
         plugins={[plugin.current]}
         className="w-full h-full"
-        setApi={setApi}
+        setApi={setCarouselApi}
         opts={{
           loop: true,
         }}
@@ -181,7 +129,7 @@ export const HeroSection = ({ onOpenCart }: HeroSectionProps) => {
                         onClick={() => handlePrimaryClick(slide.primary_btn_link)}
                         className="group text-lg px-8 py-6 glow-green hover:scale-105 transition-all duration-300"
                       >
-                        <TrendingUp className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                        <LucideIcons.TrendingUp className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                         {slide.primary_btn_text}
                       </Button>
                       <Button
@@ -201,7 +149,10 @@ export const HeroSection = ({ onOpenCart }: HeroSectionProps) => {
                           key={idx}
                           className="flex items-center gap-2 text-muted-foreground"
                         >
-                          <indicator.icon className={`h-5 w-5 ${indicator.color}`} />
+                          {(() => {
+                            const Icon = getIcon(indicator.icon);
+                            return <Icon className={`h-5 w-5 ${indicator.color}`} />;
+                          })()}
                           <span className="text-sm">{indicator.text}</span>
                         </div>
                       ))}
@@ -212,7 +163,10 @@ export const HeroSection = ({ onOpenCart }: HeroSectionProps) => {
                   <div className="absolute bottom-20 right-8 md:right-20 card-elevated rounded-xl p-4 border border-border/50 animate-float backdrop-blur-sm bg-card/80">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                        <slide.floating_card_icon className="h-5 w-5 text-primary" />
+                        {(() => {
+                          const FloatingIcon = getIcon(slide.floating_card_icon);
+                          return <FloatingIcon className="h-5 w-5 text-primary" />;
+                        })()}
                       </div>
                       <div>
                         <p className="text-xs text-muted-foreground">{slide.floating_card_description}</p>
@@ -231,22 +185,21 @@ export const HeroSection = ({ onOpenCart }: HeroSectionProps) => {
         {/* Carousel navigation */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 z-20">
           <CarouselPrevious className="static translate-y-0 bg-muted/50 border-border hover:bg-muted hover:border-primary backdrop-blur-sm" />
-          
+
           {/* Dots indicator */}
           <div className="flex gap-2">
             {slides.map((_, index) => (
               <button
                 key={index}
-                onClick={() => api?.scrollTo(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  currentSlide === index
+                onClick={() => carouselApi?.scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${currentSlide === index
                     ? "w-8 bg-primary"
                     : "bg-muted-foreground/50 hover:bg-muted-foreground"
-                }`}
+                  }`}
               />
             ))}
           </div>
-          
+
           <CarouselNext className="static translate-y-0 bg-muted/50 border-border hover:bg-muted hover:border-primary backdrop-blur-sm" />
         </div>
       </Carousel>

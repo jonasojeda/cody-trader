@@ -4,6 +4,8 @@ const API_BASE_URL =
 
 interface ApiOptions extends RequestInit {
   sinPaginar?: boolean;
+  paginadoSimple?: boolean;
+  ordenFechaCreado?: string;
 }
 
 async function fetchApi<T>(
@@ -14,9 +16,8 @@ async function fetchApi<T>(
   const params = new URLSearchParams();
   if (sinPaginar) params.append("sinPaginar", "1");
 
-  const url = `${API_BASE_URL}/${endpoint}${
-    params.toString() ? `?${params}` : ""
-  }`;
+  const url = `${API_BASE_URL}/${endpoint}${params.toString() ? `?${params}` : ""
+    }`;
 
   let token = "";
   if (typeof window !== "undefined") {
@@ -259,4 +260,36 @@ export const api = {
     fetchApi<PaginatedResponse<Credential>>("credentials", {
       sinPaginar: true,
     }),
+  getSlides: () =>
+    fetchApi<PaginatedResponse<Slide>>("slides", {
+      sinPaginar: true,
+      paginadoSimple: true,
+      ordenFechaCreado: "DESC"
+    }),
 };
+
+export interface SlideIndicator {
+  icon: string;
+  text: string;
+  color: string;
+}
+
+export interface Slide {
+  id: number;
+  title: string;
+  highlight: string;
+  tag: string;
+  description: string;
+  primary_btn_text: string;
+  primary_btn_link: string;
+  secondary_btn_text: string;
+  secondary_btn_link: string;
+  image: string;
+  floating_card_title: string;
+  floating_card_description: string;
+  floating_card_icon: string;
+  indicators: SlideIndicator[];
+  expiration: boolean;
+  expiration_date: string | null;
+  activation_date: string | null;
+}
