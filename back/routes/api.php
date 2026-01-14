@@ -41,3 +41,7 @@ Route::apiResource('credentials', App\Http\Controllers\CredentialController::cla
 Route::apiResource('slides', App\Http\Controllers\SlideController::class)
     ->only(['index', 'show'])
     ->parameter('slides', 'slide');
+
+Route::apiResource('blogs', App\Http\Controllers\BlogController::class)
+    ->only(['index', 'show'])
+    ->parameter('blogs', 'blog');

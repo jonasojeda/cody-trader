@@ -16,4 +16,16 @@ class Blog extends Model
         'thumbnail',
         'youtubeId',
     ];
+
+    public function obtenerDatos()
+    {
+        return [
+            'id' => $this->id,
+            'order' => $this->order,
+            'title' => $this->title,
+            'description' => $this->description,
+            'thumbnail' => $this->thumbnail,
+            'youtubeId' => $this->youtubeId,
+        ];
+    }
 }

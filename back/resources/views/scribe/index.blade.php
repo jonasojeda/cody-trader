@@ -66,6 +66,19 @@
                     <a href="#authenticating-requests">Authenticating requests</a>
                 </li>
                             </ul>
+                    <ul id="tocify-header-blog" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="blog">
+                    <a href="#blog">Blog</a>
+                </li>
+                                    <ul id="tocify-subheader-blog" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="blog-GETapi-blogs">
+                                <a href="#blog-GETapi-blogs">Display a listing of the resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="blog-GETapi-blogs--id-">
+                                <a href="#blog-GETapi-blogs--id-">Display the specified resource.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-credential" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="credential">
                     <a href="#credential">Credential</a>
@@ -153,7 +166,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: January 12, 2026</li>
+        <li>Last updated: January 14, 2026</li>
     </ul>
 </div>
 
@@ -172,7 +185,481 @@ You can switch the language used with the tabs at the top right (or from the nav
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
 
-        <h1 id="credential">Credential</h1>
+        <h1 id="blog">Blog</h1>
+
+    <p>Controlador para gestionar los blogs/videos.</p>
+
+                                <h2 id="blog-GETapi-blogs">Display a listing of the resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-blogs">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/blogs?nroPagina=1&amp;sinPaginar=1&amp;paginadoSimple=1&amp;ordenFechaCreado=DESC&amp;orden=architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"nroPagina\": 4326.41688,
+    \"sinPaginar\": true,
+    \"paginadoSimple\": true,
+    \"ordenFechaCreado\": \"architecto\",
+    \"orden\": \"architecto\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/blogs"
+);
+
+const params = {
+    "nroPagina": "1",
+    "sinPaginar": "1",
+    "paginadoSimple": "1",
+    "ordenFechaCreado": "DESC",
+    "orden": "architecto",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "nroPagina": 4326.41688,
+    "sinPaginar": true,
+    "paginadoSimple": true,
+    "ordenFechaCreado": "architecto",
+    "orden": "architecto"
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-blogs">
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 47
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: {
+        &quot;ordenFechaCreado&quot;: [
+            &quot;validation.in&quot;
+        ],
+        &quot;orden&quot;: [
+            &quot;validation.in&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-blogs" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-blogs"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-blogs"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-blogs" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-blogs">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-blogs" data-method="GET"
+      data-path="api/blogs"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-blogs', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-blogs"
+                    onclick="tryItOut('GETapi-blogs');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-blogs"
+                    onclick="cancelTryOut('GETapi-blogs');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-blogs"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/blogs</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-blogs"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-blogs"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>nroPagina</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="nroPagina"                data-endpoint="GETapi-blogs"
+               value="1"
+               data-component="query">
+    <br>
+<p>Página a mostrar. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sinPaginar</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-blogs" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="1"
+                   data-endpoint="GETapi-blogs"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-blogs" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="0"
+                   data-endpoint="GETapi-blogs"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Para evitar la paginación y devolver todos los registros. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>paginadoSimple</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-blogs" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="1"
+                   data-endpoint="GETapi-blogs"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-blogs" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="0"
+                   data-endpoint="GETapi-blogs"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Para realizar un paginado simple con anterior/siguiente, eficiente cuando se manejan muchos datos. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ordenFechaCreado</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="ordenFechaCreado"                data-endpoint="GETapi-blogs"
+               value="DESC"
+               data-component="query">
+    <br>
+<p>Ordenar por fecha de creación. Valores posibles: ASC, DESC. Example: <code>DESC</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>orden</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="orden"                data-endpoint="GETapi-blogs"
+               value="architecto"
+               data-component="query">
+    <br>
+<p>Ordenar por el campo order. Valores posibles: ASC, DESC. Default: ASC Example: <code>architecto</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>nroPagina</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="nroPagina"                data-endpoint="GETapi-blogs"
+               value="4326.41688"
+               data-component="body">
+    <br>
+<p>Example: <code>4326.41688</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>sinPaginar</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-blogs" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="true"
+                   data-endpoint="GETapi-blogs"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-blogs" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="false"
+                   data-endpoint="GETapi-blogs"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>paginadoSimple</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-blogs" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="true"
+                   data-endpoint="GETapi-blogs"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-blogs" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="false"
+                   data-endpoint="GETapi-blogs"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ordenFechaCreado</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="ordenFechaCreado"                data-endpoint="GETapi-blogs"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>orden</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="orden"                data-endpoint="GETapi-blogs"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+        </form>
+
+                    <h2 id="blog-GETapi-blogs--id-">Display the specified resource.</h2>
+
+<p>
+</p>
+
+<p>Obtener datos de un registro</p>
+
+<span id="example-requests-GETapi-blogs--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/blogs/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/blogs/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-blogs--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 46
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 1,
+    &quot;order&quot;: 1,
+    &quot;title&quot;: &quot;Introducci&oacute;n al Trading de Criptomonedas&quot;,
+    &quot;description&quot;: &quot;Aprende los conceptos fundamentales del trading de criptomonedas. En este video exploramos las bases del mercado crypto, c&oacute;mo funcionan los exchanges, y las estrategias b&aacute;sicas que todo trader debe conocer antes de comenzar su camino en este emocionante mundo financiero.&quot;,
+    &quot;thumbnail&quot;: &quot;https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg&quot;,
+    &quot;youtubeId&quot;: &quot;dQw4w9WgXcQ&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-blogs--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-blogs--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-blogs--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-blogs--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-blogs--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-blogs--id-" data-method="GET"
+      data-path="api/blogs/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-blogs--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-blogs--id-"
+                    onclick="tryItOut('GETapi-blogs--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-blogs--id-"
+                    onclick="cancelTryOut('GETapi-blogs--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-blogs--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/blogs/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-blogs--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-blogs--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-blogs--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>ID del registro. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                <h1 id="credential">Credential</h1>
 
     <p>Controlador para gestionar las credenciales.</p>
 
@@ -1466,7 +1953,7 @@ access-control-allow-origin: *
         &quot;Certificaci&oacute;n CMT&quot;,
         &quot;+2,000 alumnos formados&quot;
     ],
-    &quot;image&quot;: null
+    &quot;image&quot;: &quot;http://127.0.0.1:8000/storage/instructors/01KEZ52EW053VMF9ZWPHNBF5HC.webp&quot;
 }</code>
  </pre>
     </span>
@@ -2807,7 +3294,7 @@ access-control-allow-origin: *
     &quot;primary_btn_link&quot;: &quot;#cart&quot;,
     &quot;secondary_btn_text&quot;: &quot;Ver metodolog&iacute;a&quot;,
     &quot;secondary_btn_link&quot;: &quot;#metodologia&quot;,
-    &quot;image&quot;: &quot;https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&amp;w=2070&amp;auto=format&amp;fit=crop&quot;,
+    &quot;image&quot;: &quot;http://127.0.0.1:8000/storage/slides/01KETB9G7AMYHWVYTCVYF3HGEQ.jpg&quot;,
     &quot;floating_card_title&quot;: &quot;+340 ops&quot;,
     &quot;floating_card_description&quot;: &quot;Backtesting&quot;,
     &quot;floating_card_icon&quot;: &quot;BarChart3&quot;,
