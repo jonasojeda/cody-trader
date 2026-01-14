@@ -10,6 +10,7 @@ import { Footer } from "@/components/Footer";
 import { CartModal } from "@/components/CartModal";
 import { RegistrationForm } from "@/components/RegistrationForm";
 import { ConfirmationModal } from "@/components/ConfirmationModal";
+import BlogSection from "@/components/BlogSection";
 
 const Index = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -40,6 +41,7 @@ const Index = () => {
       
       <main>
         <HeroSection onOpenCart={handleOpenCart} />
+        <BlogSection />
         <MethodologySection />
         <LearningSection />
         <AuthoritySection />
