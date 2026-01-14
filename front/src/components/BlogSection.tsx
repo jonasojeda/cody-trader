@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Play, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { api, Blog } from "../lib/api";
 import {
   Dialog,
   DialogContent,
@@ -9,142 +10,26 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
-interface BlogPost {
-  id: number;
-  order: number;
-  title: string;
-  description: string;
-  thumbnail: string;
-  youtubeId: string;
-}
 
-// Sample blog data - replace with your actual data
-const blogPosts: BlogPost[] = [
-  {
-    id: 1,
-    order: 1,
-    title: "Introducción al Trading de Criptomonedas",
-    description: "Aprende los conceptos fundamentales del trading de criptomonedas. En este video exploramos las bases del mercado crypto, cómo funcionan los exchanges, y las estrategias básicas que todo trader debe conocer antes de comenzar su camino en este emocionante mundo financiero.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    id: 2,
-    order: 2,
-    title: "Análisis Técnico: Patrones de Velas",
-    description: "Domina el arte del análisis técnico con patrones de velas japonesas. Descubre cómo interpretar las formaciones más importantes como doji, martillo, envolvente y muchos más para tomar decisiones de trading más informadas.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    id: 3,
-    order: 3,
-    title: "Gestión de Riesgo en Trading",
-    description: "La gestión de riesgo es la clave del éxito en el trading. Aprende a proteger tu capital, establecer stop-loss efectivos, y calcular el tamaño de posición adecuado para cada operación.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    id: 4,
-    order: 4,
-    title: "Estrategias de Scalping",
-    description: "El scalping es una técnica de trading que busca obtener pequeñas ganancias en múltiples operaciones. Conoce las mejores estrategias y herramientas para convertirte en un scalper exitoso.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    id: 5,
-    order: 5,
-    title: "DeFi: El Futuro de las Finanzas",
-    description: "Las finanzas descentralizadas están revolucionando el mundo financiero. Explora los protocolos DeFi más importantes, cómo funcionan los pools de liquidez, y las oportunidades de yield farming.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    id: 1,
-    order: 1,
-    title: "Introducción al Trading de Criptomonedas",
-    description: "Aprende los conceptos fundamentales del trading de criptomonedas. En este video exploramos las bases del mercado crypto, cómo funcionan los exchanges, y las estrategias básicas que todo trader debe conocer antes de comenzar su camino en este emocionante mundo financiero.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    id: 2,
-    order: 2,
-    title: "Análisis Técnico: Patrones de Velas",
-    description: "Domina el arte del análisis técnico con patrones de velas japonesas. Descubre cómo interpretar las formaciones más importantes como doji, martillo, envolvente y muchos más para tomar decisiones de trading más informadas.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    id: 3,
-    order: 3,
-    title: "Gestión de Riesgo en Trading",
-    description: "La gestión de riesgo es la clave del éxito en el trading. Aprende a proteger tu capital, establecer stop-loss efectivos, y calcular el tamaño de posición adecuado para cada operación.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    id: 4,
-    order: 4,
-    title: "Estrategias de Scalping",
-    description: "El scalping es una técnica de trading que busca obtener pequeñas ganancias en múltiples operaciones. Conoce las mejores estrategias y herramientas para convertirte en un scalper exitoso.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    id: 5,
-    order: 5,
-    title: "DeFi: El Futuro de las Finanzas",
-    description: "Las finanzas descentralizadas están revolucionando el mundo financiero. Explora los protocolos DeFi más importantes, cómo funcionan los pools de liquidez, y las oportunidades de yield farming.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    id: 1,
-    order: 1,
-    title: "Introducción al Trading de Criptomonedas",
-    description: "Aprende los conceptos fundamentales del trading de criptomonedas. En este video exploramos las bases del mercado crypto, cómo funcionan los exchanges, y las estrategias básicas que todo trader debe conocer antes de comenzar su camino en este emocionante mundo financiero.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    id: 2,
-    order: 2,
-    title: "Análisis Técnico: Patrones de Velas",
-    description: "Domina el arte del análisis técnico con patrones de velas japonesas. Descubre cómo interpretar las formaciones más importantes como doji, martillo, envolvente y muchos más para tomar decisiones de trading más informadas.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    id: 3,
-    order: 3,
-    title: "Gestión de Riesgo en Trading",
-    description: "La gestión de riesgo es la clave del éxito en el trading. Aprende a proteger tu capital, establecer stop-loss efectivos, y calcular el tamaño de posición adecuado para cada operación.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    id: 4,
-    order: 4,
-    title: "Estrategias de Scalping",
-    description: "El scalping es una técnica de trading que busca obtener pequeñas ganancias en múltiples operaciones. Conoce las mejores estrategias y herramientas para convertirte en un scalper exitoso.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-  {
-    id: 5,
-    order: 5,
-    title: "DeFi: El Futuro de las Finanzas",
-    description: "Las finanzas descentralizadas están revolucionando el mundo financiero. Explora los protocolos DeFi más importantes, cómo funcionan los pools de liquidez, y las oportunidades de yield farming.",
-    thumbnail: "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
-    youtubeId: "dQw4w9WgXcQ",
-  },
-];
 
 const BlogSection = () => {
-  const [selectedBlog, setSelectedBlog] = useState<BlogPost | null>(null);
+  const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);
   const [showAll, setShowAll] = useState(false);
+  const [blogPosts, setBlogPosts] = useState<Blog[]>([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await api.getBlogs();
+        if (response && response.data) {
+          setBlogPosts(response.data);
+        }
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
+    };
+    fetchBlogs();
+  }, []);
 
   // Sort by order and limit display
   const sortedPosts = [...blogPosts].sort((a, b) => a.order - b.order);
@@ -163,7 +48,8 @@ const BlogSection = () => {
             Aprende con Nuestros Videos
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Explora nuestra colección de videos educativos sobre trading y criptomonedas
+            Explora nuestra colección de videos educativos sobre trading y
+            criptomonedas
           </p>
         </div>
 

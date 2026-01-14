@@ -6,6 +6,7 @@ interface ApiOptions extends RequestInit {
   sinPaginar?: boolean;
   paginadoSimple?: boolean;
   ordenFechaCreado?: string;
+  orden?: string;
 }
 
 async function fetchApi<T>(
@@ -15,6 +16,9 @@ async function fetchApi<T>(
   const { sinPaginar, ...fetchOptions } = options;
   const params = new URLSearchParams();
   if (sinPaginar) params.append("sinPaginar", "1");
+  if (options.paginadoSimple) params.append("paginadoSimple", "1");
+  if (options.ordenFechaCreado) params.append("ordenFechaCreado", options.ordenFechaCreado);
+  if (options.orden) params.append("orden", options.orden);
 
   const url = `${API_BASE_URL}/${endpoint}${params.toString() ? `?${params}` : ""
     }`;
@@ -266,7 +270,23 @@ export const api = {
       paginadoSimple: true,
       ordenFechaCreado: "DESC"
     }),
+  getBlogs: () =>
+    fetchApi<PaginatedResponse<Blog>>("blogs", {
+      sinPaginar: true,
+      paginadoSimple: true,
+      ordenFechaCreado: "DESC",
+      orden: "ASC"
+    }),
 };
+
+export interface Blog {
+  id: number;
+  order: number;
+  title: string;
+  description: string;
+  thumbnail: string;
+  youtubeId: string;
+}
 
 export interface SlideIndicator {
   icon: string;
