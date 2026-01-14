@@ -38,11 +38,13 @@ class BlogResource extends Resource
                     ->label('Descripción')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('thumbnail')
-                    ->label('Miniatura (URL)')
-                    ->url() // Validate it's a URL since seeder uses URLs
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\FileUpload::make('thumbnail')
+                    ->label('Miniatura')
+                    ->image()
+                    ->disk('public')
+                            ->optimize('webp')
+                    ->directory('blogs')
+                    ->required(),
                 Forms\Components\TextInput::make('youtubeId')
                     ->label('ID de YouTube')
                     ->required()
