@@ -42,7 +42,7 @@ class BlogResource extends Resource
                     ->label('Miniatura')
                     ->image()
                     ->disk('public')
-                            ->optimize('webp')
+                    ->optimize('jpg')
                     ->directory('blogs')
                     ->required(),
                 Forms\Components\TextInput::make('youtubeId')
