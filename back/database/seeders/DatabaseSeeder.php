@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             CredentialSeeder::class,
             SlideSeeder::class,
             BlogSeeder::class,
+            MedioPagoSeeder::class,
         ]);
     }
 }
