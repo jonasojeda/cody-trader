@@ -1,14 +1,29 @@
+import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import { Button } from "./ui/button";
-import { ShoppingCart, CheckCircle2, TrendingUp, Clock, Users } from "lucide-react";
+import {
+  ShoppingCart,
+  CheckCircle2,
+  TrendingUp,
+  Clock,
+  Users,
+  CreditCard,
+  QrCode,
+} from "lucide-react";
 
 interface CartModalProps {
   isOpen: boolean;
   onClose: () => void;
   onProceed: () => void;
+  onPayment: () => void;
 }
 
-export const CartModal = ({ isOpen, onClose, onProceed }: CartModalProps) => {
+export const CartModal = ({
+  isOpen,
+  onClose,
+  onProceed,
+  onPayment,
+}: CartModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-lg bg-card border-border">
@@ -20,7 +35,7 @@ export const CartModal = ({ isOpen, onClose, onProceed }: CartModalProps) => {
             Tu selección
           </DialogTitle>
         </DialogHeader>
-        
+
         <div className="space-y-6 py-4">
           {/* Course card */}
           <div className="rounded-xl bg-muted/50 border border-border p-5">
@@ -34,11 +49,13 @@ export const CartModal = ({ isOpen, onClose, onProceed }: CartModalProps) => {
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-2xl font-display font-bold text-primary">$497</p>
+                <p className="text-2xl font-display font-bold text-primary">
+                  $497
+                </p>
                 <p className="text-xs text-muted-foreground">USD</p>
               </div>
             </div>
-            
+
             <div className="space-y-2 mb-4">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Clock className="h-4 w-4" />
@@ -53,17 +70,22 @@ export const CartModal = ({ isOpen, onClose, onProceed }: CartModalProps) => {
                 <span>Sesiones en vivo semanales</span>
               </div>
             </div>
-            
+
             <div className="border-t border-border pt-4">
-              <p className="text-sm font-medium text-foreground mb-2">Incluye:</p>
+              <p className="text-sm font-medium text-foreground mb-2">
+                Incluye:
+              </p>
               <ul className="space-y-1.5">
                 {[
                   "Módulos completos de formación",
                   "Acceso a la metodología documentada",
                   "Plantillas y herramientas de análisis",
-                  "Soporte directo con el mentor"
+                  "Soporte directo con el mentor",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <li
+                    key={item}
+                    className="flex items-center gap-2 text-sm text-muted-foreground"
+                  >
                     <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
                     {item}
                   </li>
@@ -71,31 +93,35 @@ export const CartModal = ({ isOpen, onClose, onProceed }: CartModalProps) => {
               </ul>
             </div>
           </div>
-          
+
           {/* Summary */}
           <div className="flex items-center justify-between py-4 border-t border-border">
-            <span className="font-semibold text-foreground">Total a reservar</span>
-            <span className="text-2xl font-display font-bold text-primary">$497 USD</span>
+            <span className="font-semibold text-foreground">Total a pagar</span>
+            <span className="text-2xl font-display font-bold text-primary">
+              $497 USD
+            </span>
           </div>
-          
+
           <p className="text-xs text-muted-foreground text-center">
-            Al continuar, un asesor se pondrá en contacto para coordinar el pago y confirmar tu admisión.
+            Selecciona una opción para continuar con tu inscripción.
           </p>
-          
+
           <div className="flex flex-col gap-3">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               onClick={onProceed}
               className="w-full glow-green hover:scale-[1.02] transition-all duration-300"
             >
               Reservar mi lugar
             </Button>
-            <Button 
-              variant="ghost" 
-              onClick={onClose}
-              className="w-full text-muted-foreground hover:text-foreground"
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={onPayment}
+              className="w-full hover:scale-[1.02] transition-all duration-300 border-primary/50 hover:bg-primary/10"
             >
-              Seguir explorando
+              <CreditCard className="mr-2 h-4 w-4" />
+              Realizar pago
             </Button>
           </div>
         </div>
