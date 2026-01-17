@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -7,6 +7,7 @@ import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { UserPlus, Loader2, Upload, FileCheck, X } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { api, Country } from "@/lib/api";
 
 interface RegistrationFormProps {
   isOpen: boolean;
@@ -15,27 +16,44 @@ interface RegistrationFormProps {
   requiresReceipt?: boolean;
 }
 
-const countries = [
-  "Argentina", "Bolivia", "Chile", "Colombia", "Costa Rica", "Cuba", "Ecuador",
-  "El Salvador", "España", "Guatemala", "Honduras", "México", "Nicaragua",
-  "Panamá", "Paraguay", "Perú", "Puerto Rico", "República Dominicana",
-  "Uruguay", "Venezuela", "Otro"
-];
-
 export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt = false }: RegistrationFormProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [loadingCountries, setLoadingCountries] = useState(true);
+  const [countries, setCountries] = useState<Country[]>([]);
   const [receiptFile, setReceiptFile] = useState<File | null>(null);
   const [receiptPreview, setReceiptPreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
-    country: "",
+    countryId: "",
     comments: ""
   });
+
+  useEffect(() => {
+    if (isOpen) {
+      loadCountries();
+    }
+  }, [isOpen]);
+
+  const loadCountries = async () => {
+    try {
+      const response = await api.getCountries();
+      setCountries(response.data);
+    } catch (error) {
+      console.error("Error loading countries:", error);
+      toast({
+        title: "Error",
+        description: "No se pudieron cargar los países.",
+        variant: "destructive"
+      });
+    } finally {
+      setLoadingCountries(false);
+    }
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -50,7 +68,7 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
         });
         return;
       }
-      
+
       // Validate file size (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
         toast({
@@ -60,9 +78,9 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
         });
         return;
       }
-      
+
       setReceiptFile(file);
-      
+
       // Create preview for images
       if (file.type.startsWith('image/')) {
         const reader = new FileReader();
@@ -86,7 +104,7 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validation
     if (!formData.firstName.trim() || !formData.lastName.trim()) {
       toast({
@@ -96,7 +114,7 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
       });
       return;
     }
-    
+
     if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       toast({
         title: "Email inválido",
@@ -105,7 +123,7 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
       });
       return;
     }
-    
+
     if (!formData.phone.trim()) {
       toast({
         title: "Teléfono requerido",
@@ -114,8 +132,8 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
       });
       return;
     }
-    
-    if (!formData.country) {
+
+    if (!formData.countryId) {
       toast({
         title: "País requerido",
         description: "Por favor selecciona tu país.",
@@ -135,24 +153,66 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
     }
 
     setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    onSuccess();
-    
-    // Reset form
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      country: "",
-      comments: ""
-    });
-    setReceiptFile(null);
-    setReceiptPreview(null);
+
+    try {
+      const formPayload = new FormData();
+      formPayload.append("name", formData.firstName);
+      formPayload.append("last_name", formData.lastName);
+      formPayload.append("email", formData.email);
+      formPayload.append("phone", formData.phone);
+      // Send current date as reservation_date
+      formPayload.append("reservation_date", new Date().toISOString().split('T')[0]);
+
+      if (receiptFile) {
+        formPayload.append("ticket", receiptFile);
+      }
+
+      if (formData.countryId) {
+        formPayload.append("country_id", formData.countryId);
+      }
+
+      await api.createReservation(formPayload);
+
+      toast({
+        title: "Reserva exitosa",
+        description: "Tu reserva ha sido registrada correctamente.",
+      });
+
+      onSuccess();
+
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        countryId: "",
+        comments: ""
+      });
+      setReceiptFile(null);
+      setReceiptPreview(null);
+
+    } catch (error: any) {
+      console.error("Reservation error:", error);
+
+      // Check for 409 Conflict (Duplicate Email)
+      if ((error.message && error.message.includes("409")) || (error.message && error.message.includes("Ya existe una reserva"))) {
+        toast({
+          title: "Email ya registrado",
+          description: "Ya existe una reserva con este email. Por favor verifica tus datos.",
+          variant: "destructive"
+        });
+      } else {
+        // Generic API error (maybe include message from backend)
+        toast({
+          title: "Error al registrar",
+          description: error.message || "Hubo un problema al procesar tu solicitud.",
+          variant: "destructive"
+        });
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -166,7 +226,7 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
             {requiresReceipt ? "Confirmar pago" : "Completa tu reserva"}
           </DialogTitle>
         </DialogHeader>
-        
+
         <form onSubmit={handleSubmit} className="space-y-4 py-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -192,7 +252,7 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
               />
             </div>
           </div>
-          
+
           <div className="space-y-2">
             <Label htmlFor="email">Email *</Label>
             <Input
@@ -205,7 +265,7 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
               maxLength={100}
             />
           </div>
-          
+
           <div className="space-y-2">
             <Label htmlFor="phone">Teléfono / WhatsApp *</Label>
             <Input
@@ -218,20 +278,20 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
               maxLength={20}
             />
           </div>
-          
+
           <div className="space-y-2">
             <Label htmlFor="country">País *</Label>
-            <Select 
-              value={formData.country} 
-              onValueChange={(value) => setFormData(prev => ({ ...prev, country: value }))}
+            <Select
+              value={formData.countryId}
+              onValueChange={(value) => setFormData(prev => ({ ...prev, countryId: value }))}
             >
-              <SelectTrigger className="bg-muted border-border">
-                <SelectValue placeholder="Selecciona tu país" />
+              <SelectTrigger className="bg-muted border-border" disabled={loadingCountries}>
+                <SelectValue placeholder={loadingCountries ? "Cargando..." : "Selecciona tu país"} />
               </SelectTrigger>
               <SelectContent className="bg-card border-border max-h-60">
                 {countries.map((country) => (
-                  <SelectItem key={country} value={country}>
-                    {country}
+                  <SelectItem key={country.id} value={country.id.toString()}>
+                    {country.name}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -247,9 +307,9 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
                   <div className="rounded-xl bg-muted/50 border border-border p-4">
                     <div className="flex items-center gap-3">
                       {receiptPreview ? (
-                        <img 
-                          src={receiptPreview} 
-                          alt="Preview" 
+                        <img
+                          src={receiptPreview}
+                          alt="Preview"
                           className="w-16 h-16 object-cover rounded-lg"
                         />
                       ) : (
@@ -299,7 +359,7 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
               </div>
             </div>
           )}
-          
+
           <div className="space-y-2">
             <Label htmlFor="comments">Comentarios (opcional)</Label>
             <Textarea
@@ -312,15 +372,15 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
               maxLength={500}
             />
           </div>
-          
+
           <p className="text-xs text-muted-foreground">
             * Campos obligatorios. Tu información está protegida y no será compartida.
           </p>
-          
+
           <div className="flex flex-col gap-3 pt-2">
-            <Button 
+            <Button
               type="submit"
-              size="lg" 
+              size="lg"
               disabled={isSubmitting}
               className="w-full glow-green hover:scale-[1.02] transition-all duration-300"
             >
@@ -333,9 +393,9 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
                 requiresReceipt ? "Enviar comprobante" : "Confirmar reserva"
               )}
             </Button>
-            <Button 
+            <Button
               type="button"
-              variant="ghost" 
+              variant="ghost"
               onClick={onClose}
               disabled={isSubmitting}
               className="w-full text-muted-foreground hover:text-foreground"

@@ -277,7 +277,44 @@ export const api = {
       ordenFechaCreado: "DESC",
       orden: "ASC"
     }),
+  getReservations: () =>
+    fetchApi<PaginatedResponse<Reservation>>("reservations", {
+      sinPaginar: true,
+      ordenFechaCreado: "DESC"
+    }),
+  createReservation: (data: FormData) =>
+    fetchApi<Reservation>("reservations", {
+      method: "POST",
+      body: data
+    }),
+  getCountries: () =>
+    fetchApi<PaginatedResponse<Country>>("countries", {
+      sinPaginar: true,
+      ordenFechaCreado: "DESC"
+    }),
 };
+
+export interface Country {
+  id: number;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Reservation {
+  id: number;
+  name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+  reservation_date: string;
+  confirmed: boolean;
+  paid: boolean;
+  ticket: string | null;
+  country_id: number | null;
+  created_at: string;
+  updated_at: string;
+}
 
 export interface Blog {
   id: number;

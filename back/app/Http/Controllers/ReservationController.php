@@ -67,6 +67,12 @@ class ReservationController extends Controller
         $paid = $request->input('paid', 0);
         $country_id = $request->input('country_id');
 
+        //Verificar que el email no exista ya
+        $existingReservation = Reservation::where('email', $email)->first();
+        if ($existingReservation) {
+            return response()->json(["message" => "Ya existe una reserva con este email."], 409);
+        }
+        
         $ticketPath = null;
         if ($request->hasFile('ticket')) {
             $ticketPath = $request->file('ticket')->store('tickets', 'public');

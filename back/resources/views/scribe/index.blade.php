@@ -3443,8 +3443,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "reservation_date=2024-01-20"\
     --form "confirmed="\
     --form "paid="\
-    --form "country=Argentina"\
-    --form "ticket=@C:\Users\Jonas\AppData\Local\Temp\phpAF7B.tmp" </code></pre></div>
+    --form "country_id=1"\
+    --form "ticket=@C:\Users\Jonas\AppData\Local\Temp\phpFA68.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -3465,7 +3465,7 @@ body.append('phone', '123456789');
 body.append('reservation_date', '2024-01-20');
 body.append('confirmed', '');
 body.append('paid', '');
-body.append('country', 'Argentina');
+body.append('country_id', '1');
 body.append('ticket', document.querySelector('input[name="ticket"]').files[0]);
 
 fetch(url, {
@@ -3664,19 +3664,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Comprobante de pago (imagen o PDF). Example: <code>C:\Users\Jonas\AppData\Local\Temp\phpAF7B.tmp</code></p>
+<p>Comprobante de pago (imagen o PDF). Example: <code>C:\Users\Jonas\AppData\Local\Temp\phpFA68.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>country</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+            <b style="line-height: 2;"><code>country_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
 <i>optional</i> &nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-                              name="country"                data-endpoint="POSTapi-reservations"
-               value="Argentina"
+                <input type="number" style="display: none"
+               step="any"               name="country_id"                data-endpoint="POSTapi-reservations"
+               value="1"
                data-component="body">
     <br>
-<p>País del cliente. Example: <code>Argentina</code></p>
+<p>ID del país asociado. Example: <code>1</code></p>
         </div>
         </form>
 
@@ -3693,14 +3693,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/reservations/16" \
+    --get "http://127.0.0.1:8000/api/reservations/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/reservations/16"
+    "http://127.0.0.1:8000/api/reservations/1"
 );
 
 const headers = {
@@ -3717,7 +3717,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-reservations--id-">
             <blockquote>
-            <p>Example response (404):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -3731,7 +3731,23 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;No query results for model [App\\Models\\Reservation] 16&quot;
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;Jonas&quot;,
+    &quot;last_name&quot;: &quot;Ojeda&quot;,
+    &quot;email&quot;: &quot;jonojed@gmail.com&quot;,
+    &quot;phone&quot;: &quot;3856979948&quot;,
+    &quot;reservation_date&quot;: &quot;2026-01-16 00:00:00&quot;,
+    &quot;confirmed&quot;: 1,
+    &quot;paid&quot;: 1,
+    &quot;country_id&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Argentina&quot;,
+        &quot;created_at&quot;: &quot;2026-01-17T02:23:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2026-01-17T02:23:19.000000Z&quot;
+    },
+    &quot;ticket_url&quot;: &quot;http://127.0.0.1:8000/storage/tickets/X1XlkbXblfARPbLenbSKk3uq0FwKOQQQm6ChxhkQ.jpg&quot;,
+    &quot;created_at&quot;: &quot;2026-01-17T02:54:12.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2026-01-17T02:54:12.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -3814,10 +3830,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-reservations--id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the reservation. Example: <code>16</code></p>
+<p>The ID of the reservation. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>reservation</code></b>&nbsp;&nbsp;
