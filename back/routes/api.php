@@ -46,6 +46,10 @@ Route::apiResource('blogs', App\Http\Controllers\BlogController::class)
     ->only(['index', 'show'])
     ->parameter('blogs', 'blog');
 
+Route::apiResource('countries', App\Http\Controllers\CountryController::class)
+    ->only(['index', 'show'])
+    ->parameter('countries', 'country');
+
 Route::apiResource('reservations', App\Http\Controllers\ReservationController::class)
     ->only(['store', 'show'])
     ->parameter('reservations', 'reservation');

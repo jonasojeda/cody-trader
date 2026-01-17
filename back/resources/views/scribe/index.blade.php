@@ -144,6 +144,19 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-paises" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="paises">
+                    <a href="#paises">Países</a>
+                </li>
+                                    <ul id="tocify-subheader-paises" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="paises-GETapi-countries">
+                                <a href="#paises-GETapi-countries">Listar</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="paises-GETapi-countries--id-">
+                                <a href="#paises-GETapi-countries--id-">Mostrar</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-reservas" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="reservas">
                     <a href="#reservas">Reservas</a>
@@ -2949,6 +2962,460 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                <h1 id="paises">Países</h1>
+
+    <p>Controlador para gestionar los países.</p>
+
+                                <h2 id="paises-GETapi-countries">Listar</h2>
+
+<p>
+</p>
+
+<p>Obtener una lista de países</p>
+
+<span id="example-requests-GETapi-countries">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/countries?nroPagina=1&amp;sinPaginar=1&amp;paginadoSimple=1&amp;ordenFechaCreado=DESC" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"nroPagina\": 4326.41688,
+    \"sinPaginar\": true,
+    \"paginadoSimple\": true,
+    \"ordenFechaCreado\": \"architecto\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/countries"
+);
+
+const params = {
+    "nroPagina": "1",
+    "sinPaginar": "1",
+    "paginadoSimple": "1",
+    "ordenFechaCreado": "DESC",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "nroPagina": 4326.41688,
+    "sinPaginar": true,
+    "paginadoSimple": true,
+    "ordenFechaCreado": "architecto"
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-countries">
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 45
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: {
+        &quot;ordenFechaCreado&quot;: [
+            &quot;validation.in&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-countries" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-countries"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-countries"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-countries" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-countries">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-countries" data-method="GET"
+      data-path="api/countries"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-countries', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-countries"
+                    onclick="tryItOut('GETapi-countries');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-countries"
+                    onclick="cancelTryOut('GETapi-countries');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-countries"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/countries</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-countries"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-countries"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>nroPagina</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="nroPagina"                data-endpoint="GETapi-countries"
+               value="1"
+               data-component="query">
+    <br>
+<p>Página a mostrar. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sinPaginar</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-countries" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="1"
+                   data-endpoint="GETapi-countries"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-countries" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="0"
+                   data-endpoint="GETapi-countries"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Para evitar la paginación y devolver todos los registros. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>paginadoSimple</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-countries" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="1"
+                   data-endpoint="GETapi-countries"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-countries" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="0"
+                   data-endpoint="GETapi-countries"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Para realizar un paginado simple con anterior/siguiente, eficiente cuando se manejan muchos datos. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ordenFechaCreado</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="ordenFechaCreado"                data-endpoint="GETapi-countries"
+               value="DESC"
+               data-component="query">
+    <br>
+<p>Ordenar por fecha de creación. Valores posibles: ASC, DESC. Example: <code>DESC</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>nroPagina</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="nroPagina"                data-endpoint="GETapi-countries"
+               value="4326.41688"
+               data-component="body">
+    <br>
+<p>Example: <code>4326.41688</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>sinPaginar</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-countries" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="true"
+                   data-endpoint="GETapi-countries"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-countries" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="false"
+                   data-endpoint="GETapi-countries"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>paginadoSimple</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-countries" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="true"
+                   data-endpoint="GETapi-countries"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-countries" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="false"
+                   data-endpoint="GETapi-countries"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ordenFechaCreado</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="ordenFechaCreado"                data-endpoint="GETapi-countries"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+        </form>
+
+                    <h2 id="paises-GETapi-countries--id-">Mostrar</h2>
+
+<p>
+</p>
+
+<p>Obtener los detalles de un país específico</p>
+
+<span id="example-requests-GETapi-countries--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/countries/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/countries/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-countries--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 44
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;Argentina&quot;,
+    &quot;created_at&quot;: &quot;2026-01-17T02:23:19.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2026-01-17T02:23:19.000000Z&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-countries--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-countries--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-countries--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-countries--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-countries--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-countries--id-" data-method="GET"
+      data-path="api/countries/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-countries--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-countries--id-"
+                    onclick="tryItOut('GETapi-countries--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-countries--id-"
+                    onclick="cancelTryOut('GETapi-countries--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-countries--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/countries/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-countries--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-countries--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-countries--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the country. Example: <code>1</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>country</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="country"                data-endpoint="GETapi-countries--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>ID del país. Example: <code>1</code></p>
+            </div>
+                    </form>
+
                 <h1 id="reservas">Reservas</h1>
 
     <p>API para gestionar reservas</p>
@@ -2977,7 +3444,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "confirmed="\
     --form "paid="\
     --form "country=Argentina"\
-    --form "ticket=@C:\Users\Jonas\AppData\Local\Temp\phpA501.tmp" </code></pre></div>
+    --form "ticket=@C:\Users\Jonas\AppData\Local\Temp\phpAF7B.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -3197,7 +3664,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Comprobante de pago (imagen o PDF). Example: <code>C:\Users\Jonas\AppData\Local\Temp\phpA501.tmp</code></p>
+<p>Comprobante de pago (imagen o PDF). Example: <code>C:\Users\Jonas\AppData\Local\Temp\phpAF7B.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>country</code></b>&nbsp;&nbsp;
@@ -3226,14 +3693,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/reservations/1" \
+    --get "http://127.0.0.1:8000/api/reservations/16" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/reservations/1"
+    "http://127.0.0.1:8000/api/reservations/16"
 );
 
 const headers = {
@@ -3250,7 +3717,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-reservations--id-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (404):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -3259,23 +3726,12 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 45
+x-ratelimit-remaining: 43
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;id&quot;: 1,
-    &quot;name&quot;: &quot;Jonas&quot;,
-    &quot;last_name&quot;: &quot;Ojeda&quot;,
-    &quot;email&quot;: &quot;jonojed@gmail.com&quot;,
-    &quot;phone&quot;: &quot;3856979948&quot;,
-    &quot;reservation_date&quot;: &quot;2026-01-16 00:00:00&quot;,
-    &quot;confirmed&quot;: 1,
-    &quot;paid&quot;: 1,
-    &quot;country&quot;: null,
-    &quot;ticket_url&quot;: &quot;http://127.0.0.1:8000/storage/tickets/YPgiagZN9EjEoTXRhQjEQIr5eiXblYD6wqvo5x91.jpg&quot;,
-    &quot;created_at&quot;: &quot;2026-01-17T02:18:25.000000Z&quot;,
-    &quot;updated_at&quot;: &quot;2026-01-17T02:18:25.000000Z&quot;
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Reservation] 16&quot;
 }</code>
  </pre>
     </span>
@@ -3358,10 +3814,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="id"                data-endpoint="GETapi-reservations--id-"
-               value="1"
+               value="16"
                data-component="url">
     <br>
-<p>The ID of the reservation. Example: <code>1</code></p>
+<p>The ID of the reservation. Example: <code>16</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>reservation</code></b>&nbsp;&nbsp;
