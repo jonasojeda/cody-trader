@@ -31,7 +31,7 @@ class CourseContentSeeder extends Seeder
                 ],
                 [
                     'text' => 'Sesiones en vivo semanales',
-                    'icon' => 'TrendingUp',
+                    'icon' => 'trending-up',
                 ],
             ],
 
