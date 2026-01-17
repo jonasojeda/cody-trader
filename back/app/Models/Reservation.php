@@ -20,8 +20,14 @@ class Reservation extends Model
         'confirmed',
         'paid',
         'ticket',
-        'country',
+        'country_id',
     ];
+
+    //Relaciones
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
 
     public function obtenerDatos()
     {
@@ -34,7 +40,7 @@ class Reservation extends Model
             'reservation_date' => $this->reservation_date,
             'confirmed' => $this->confirmed,
             'paid' => $this->paid,
-            'country' => $this->country,
+            'country_id' => $this->country ? $this->country->obtenerDatos() : null,
             'ticket_url' => $this->ticket ? Storage::url($this->ticket) : null,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

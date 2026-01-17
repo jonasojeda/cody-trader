@@ -36,7 +36,7 @@ class ReservationController extends Controller
      * @bodyParam confirmed boolean Confirmado (0 o 1). Example: 0
      * @bodyParam paid boolean Pagado (0 o 1). Example: 0
      * @bodyParam ticket file Comprobante de pago (imagen o PDF).
-     * @bodyParam country string País del cliente. Example: Argentina
+     * @bodyParam country_id integer ID del país asociado. Example: 1
      */
     public function store(Request $request)
     {
@@ -49,7 +49,7 @@ class ReservationController extends Controller
             'confirmed' => ['boolean', Rule::in([0, 1])],
             'paid' => ['boolean', Rule::in([0, 1])],
             'ticket' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:2048',
-            'country' => 'string|max:100|nullable',
+            'country_id' => 'nullable|exists:countries,id',
         ];
 
         //Validar parametros de consulta
@@ -65,7 +65,7 @@ class ReservationController extends Controller
         $reservation_date = $request->input('reservation_date');
         $confirmed = $request->input('confirmed', 0);
         $paid = $request->input('paid', 0);
-        $country = $request->input('country');
+        $country_id = $request->input('country_id');
 
         $ticketPath = null;
         if ($request->hasFile('ticket')) {
@@ -81,7 +81,7 @@ class ReservationController extends Controller
             'confirmed' => $confirmed,
             'paid' => $paid,
             'ticket' => $ticketPath,
-            'country' => $country,
+            'country_id' => $country_id,
         ]);
 
         return response()->json($reservation->obtenerDatos(), 201);
