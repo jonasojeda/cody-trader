@@ -98,16 +98,16 @@ class CourseContentResource extends Resource
                 Tables\Columns\TextColumn::make('currency')
                     ->searchable()
                     ->label('Moneda'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true)
-                    ->label('Creado'),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true)
-                    ->label('Actualizado'),
+                // Tables\Columns\TextColumn::make('created_at')
+                //     ->dateTime()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: true)
+                //     ->label('Creado'),
+                // Tables\Columns\TextColumn::make('updated_at')
+                //     ->dateTime()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: true)
+                //     ->label('Actualizado'),
             ])
             ->filters([
                 //
@@ -117,7 +117,7 @@ class CourseContentResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    // Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -133,7 +133,7 @@ class CourseContentResource extends Resource
     {
         return [
             'index' => Pages\ListCourseContents::route('/'),
-            'create' => Pages\CreateCourseContent::route('/create'),
+            // 'create' => Pages\CreateCourseContent::route('/create'),
             'edit' => Pages\EditCourseContent::route('/{record}/edit'),
         ];
     }
