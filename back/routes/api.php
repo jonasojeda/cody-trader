@@ -45,3 +45,7 @@ Route::apiResource('slides', App\Http\Controllers\SlideController::class)
 Route::apiResource('blogs', App\Http\Controllers\BlogController::class)
     ->only(['index', 'show'])
     ->parameter('blogs', 'blog');
+
+Route::apiResource('reservations', App\Http\Controllers\ReservationController::class)
+    ->only(['store', 'show'])
+    ->parameter('reservations', 'reservation');

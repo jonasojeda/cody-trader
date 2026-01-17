@@ -144,6 +144,19 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-reservas" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="reservas">
+                    <a href="#reservas">Reservas</a>
+                </li>
+                                    <ul id="tocify-subheader-reservas" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="reservas-POSTapi-reservations">
+                                <a href="#reservas-POSTapi-reservations">Crear</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="reservas-GETapi-reservations--id-">
+                                <a href="#reservas-GETapi-reservations--id-">Mostrar</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-slide" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="slide">
                     <a href="#slide">Slide</a>
@@ -166,7 +179,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: January 14, 2026</li>
+        <li>Last updated: January 16, 2026</li>
     </ul>
 </div>
 
@@ -568,7 +581,7 @@ access-control-allow-origin: *
     &quot;order&quot;: 1,
     &quot;title&quot;: &quot;Introducci&oacute;n al Trading de Criptomonedas&quot;,
     &quot;description&quot;: &quot;Aprende los conceptos fundamentales del trading de criptomonedas. En este video exploramos las bases del mercado crypto, c&oacute;mo funcionan los exchanges, y las estrategias b&aacute;sicas que todo trader debe conocer antes de comenzar su camino en este emocionante mundo financiero.&quot;,
-    &quot;thumbnail&quot;: &quot;https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg&quot;,
+    &quot;thumbnail&quot;: &quot;http://127.0.0.1:8000/storage/blogs/01KEZD9H1KVEMQ0F0VZKST46F6.webp&quot;,
     &quot;youtubeId&quot;: &quot;dQw4w9WgXcQ&quot;
 }</code>
  </pre>
@@ -2933,6 +2946,409 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>ID del registro. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                <h1 id="reservas">Reservas</h1>
+
+    <p>API para gestionar reservas</p>
+
+                                <h2 id="reservas-POSTapi-reservations">Crear</h2>
+
+<p>
+</p>
+
+<p>Crear un nuevo registro de reserva</p>
+
+<span id="example-requests-POSTapi-reservations">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/reservations" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "name=Juan"\
+    --form "last_name=Perez"\
+    --form "email=juan@example.com"\
+    --form "phone=123456789"\
+    --form "reservation_date=2024-01-20"\
+    --form "confirmed="\
+    --form "paid="\
+    --form "ticket=@C:\Users\Jonas\AppData\Local\Temp\php7608.tmp" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/reservations"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('name', 'Juan');
+body.append('last_name', 'Perez');
+body.append('email', 'juan@example.com');
+body.append('phone', '123456789');
+body.append('reservation_date', '2024-01-20');
+body.append('confirmed', '');
+body.append('paid', '');
+body.append('ticket', document.querySelector('input[name="ticket"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-reservations">
+</span>
+<span id="execution-results-POSTapi-reservations" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-reservations"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-reservations"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-reservations" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-reservations">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-reservations" data-method="POST"
+      data-path="api/reservations"
+      data-authed="0"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-reservations', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-reservations"
+                    onclick="tryItOut('POSTapi-reservations');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-reservations"
+                    onclick="cancelTryOut('POSTapi-reservations');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-reservations"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/reservations</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-reservations"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-reservations"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="name"                data-endpoint="POSTapi-reservations"
+               value="Juan"
+               data-component="body">
+    <br>
+<p>Nombre del cliente. Example: <code>Juan</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="last_name"                data-endpoint="POSTapi-reservations"
+               value="Perez"
+               data-component="body">
+    <br>
+<p>Apellido del cliente. Example: <code>Perez</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-reservations"
+               value="juan@example.com"
+               data-component="body">
+    <br>
+<p>Email del cliente. Example: <code>juan@example.com</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="phone"                data-endpoint="POSTapi-reservations"
+               value="123456789"
+               data-component="body">
+    <br>
+<p>Teléfono del cliente. Example: <code>123456789</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>reservation_date</code></b>&nbsp;&nbsp;
+<small>date</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="reservation_date"                data-endpoint="POSTapi-reservations"
+               value="2024-01-20"
+               data-component="body">
+    <br>
+<p>Fecha de la reserva. Example: <code>2024-01-20</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>confirmed</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="POSTapi-reservations" style="display: none">
+            <input type="radio" name="confirmed"
+                   value="true"
+                   data-endpoint="POSTapi-reservations"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-reservations" style="display: none">
+            <input type="radio" name="confirmed"
+                   value="false"
+                   data-endpoint="POSTapi-reservations"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Confirmado (0 o 1). Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>paid</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="POSTapi-reservations" style="display: none">
+            <input type="radio" name="paid"
+                   value="true"
+                   data-endpoint="POSTapi-reservations"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-reservations" style="display: none">
+            <input type="radio" name="paid"
+                   value="false"
+                   data-endpoint="POSTapi-reservations"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Pagado (0 o 1). Example: <code>false</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ticket</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="file" style="display: none"
+                              name="ticket"                data-endpoint="POSTapi-reservations"
+               value=""
+               data-component="body">
+    <br>
+<p>Comprobante de pago (imagen o PDF). Example: <code>C:\Users\Jonas\AppData\Local\Temp\php7608.tmp</code></p>
+        </div>
+        </form>
+
+                    <h2 id="reservas-GETapi-reservations--id-">Mostrar</h2>
+
+<p>
+</p>
+
+<p>Obtener los detalles de una reserva específica</p>
+
+<span id="example-requests-GETapi-reservations--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/reservations/16" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/reservations/16"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-reservations--id-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 45
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Reservation] 16&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-reservations--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-reservations--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-reservations--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-reservations--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-reservations--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-reservations--id-" data-method="GET"
+      data-path="api/reservations/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-reservations--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-reservations--id-"
+                    onclick="tryItOut('GETapi-reservations--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-reservations--id-"
+                    onclick="cancelTryOut('GETapi-reservations--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-reservations--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/reservations/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-reservations--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-reservations--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-reservations--id-"
+               value="16"
+               data-component="url">
+    <br>
+<p>The ID of the reservation. Example: <code>16</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>reservation</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="reservation"                data-endpoint="GETapi-reservations--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>ID de la reserva. Example: <code>1</code></p>
             </div>
                     </form>
 
