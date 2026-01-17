@@ -292,11 +292,33 @@ export const api = {
       sinPaginar: true,
       ordenFechaCreado: "DESC"
     }),
+  getCourseContents: () =>
+    fetchApi<PaginatedResponse<CourseContent>>("courseContents", {
+      sinPaginar: true,
+      ordenFechaCreado: "DESC"
+    }),
 };
 
 export interface Country {
   id: number;
   name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CourseContentDescription {
+  icon: string;
+  text: string;
+}
+
+export interface CourseContent {
+  id: number;
+  title: string;
+  academy: string;
+  price: string;
+  currency: string;
+  description: CourseContentDescription[];
+  content: string[];
   created_at: string;
   updated_at: string;
 }
