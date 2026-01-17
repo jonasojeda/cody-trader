@@ -20,6 +20,7 @@ class Reservation extends Model
         'confirmed',
         'paid',
         'ticket',
+        'country',
     ];
 
     public function obtenerDatos()
@@ -33,6 +34,7 @@ class Reservation extends Model
             'reservation_date' => $this->reservation_date,
             'confirmed' => $this->confirmed,
             'paid' => $this->paid,
+            'country' => $this->country,
             'ticket_url' => $this->ticket ? Storage::url($this->ticket) : null,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

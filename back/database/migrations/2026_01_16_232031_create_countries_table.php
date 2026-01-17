@@ -11,17 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reservations', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('last_name');
-            $table->string('email');
-            $table->string('phone');
-            $table->dateTime('reservation_date');
-            $table->boolean('confirmed')->default(false);
-            $table->boolean('paid')->default(false);
-            $table->string('country')->nullable();
-            $table->string('ticket')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reservations');
+        Schema::dropIfExists('countries');
     }
 };
