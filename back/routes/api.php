@@ -53,3 +53,7 @@ Route::apiResource('countries', App\Http\Controllers\CountryController::class)
 Route::apiResource('reservations', App\Http\Controllers\ReservationController::class)
     ->only(['store', 'show'])
     ->parameter('reservations', 'reservation');
+
+Route::apiResource('courseContents', App\Http\Controllers\CourseContentController::class)
+    ->only(['index', 'show'])
+    ->parameter('courseContent', 'courseContent');

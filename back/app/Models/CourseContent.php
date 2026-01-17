@@ -9,6 +9,8 @@ class CourseContent extends Model
 {
     use HasFactory;
 
+    protected $table = 'course_contents';
+    
     protected $fillable = [
         'title',
         'academy',
