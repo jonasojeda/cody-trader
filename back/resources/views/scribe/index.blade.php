@@ -144,6 +144,19 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-mediopago" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="mediopago">
+                    <a href="#mediopago">MedioPago</a>
+                </li>
+                                    <ul id="tocify-subheader-mediopago" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="mediopago-GETapi-mediosPagos">
+                                <a href="#mediopago-GETapi-mediosPagos">Display a listing of the resource.</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="mediopago-GETapi-mediosPagos--medioPago_id-">
+                                <a href="#mediopago-GETapi-mediosPagos--medioPago_id-">Display the specified resource.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-methodology" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="methodology">
                     <a href="#methodology">Methodology</a>
@@ -205,7 +218,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: January 17, 2026</li>
+        <li>Last updated: January 18, 2026</li>
     </ul>
 </div>
 
@@ -301,7 +314,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 26
+x-ratelimit-remaining: 41
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -598,7 +611,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 60
+x-ratelimit-remaining: 40
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -772,7 +785,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 56
+x-ratelimit-remaining: 36
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -1042,7 +1055,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 55
+x-ratelimit-remaining: 35
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -1050,12 +1063,12 @@ access-control-allow-origin: *
     &quot;id&quot;: 1,
     &quot;title&quot;: &quot;Programa Completo de Trading&quot;,
     &quot;academy&quot;: &quot;Academia Cody Trader&quot;,
-    &quot;price&quot;: &quot;497.00&quot;,
-    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;price&quot;: &quot;90.00&quot;,
+    &quot;currency&quot;: &quot;ARS&quot;,
     &quot;description&quot;: [
         {
-            &quot;icon&quot;: &quot;Clock&quot;,
-            &quot;text&quot;: &quot;Acceso por 12 meses&quot;
+            &quot;icon&quot;: &quot;bell-electric&quot;,
+            &quot;text&quot;: &quot;Acceso por 12 mesesssss&quot;
         },
         {
             &quot;icon&quot;: &quot;Users&quot;,
@@ -1070,10 +1083,11 @@ access-control-allow-origin: *
         &quot;M&oacute;dulos completos de formaci&oacute;n&quot;,
         &quot;Acceso a la metodolog&iacute;a documentada&quot;,
         &quot;Plantillas y herramientas de an&aacute;lisis&quot;,
-        &quot;Soporte directo con el mentor&quot;
+        &quot;Soporte directo con el mentor&quot;,
+        &quot;Cualquier cosa&quot;
     ],
     &quot;created_at&quot;: &quot;2026-01-17T05:07:41.000000Z&quot;,
-    &quot;updated_at&quot;: &quot;2026-01-17T05:28:38.000000Z&quot;
+    &quot;updated_at&quot;: &quot;2026-01-17T05:42:30.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -1249,7 +1263,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 30
+x-ratelimit-remaining: 45
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -1519,7 +1533,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 29
+x-ratelimit-remaining: 44
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -1692,7 +1706,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 34
+x-ratelimit-remaining: 49
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -1962,7 +1976,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 33
+x-ratelimit-remaining: 48
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -2184,7 +2198,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 32
+x-ratelimit-remaining: 47
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -2454,7 +2468,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 31
+x-ratelimit-remaining: 46
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -2633,7 +2647,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 38
+x-ratelimit-remaining: 53
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -2903,7 +2917,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 37
+x-ratelimit-remaining: 52
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -3008,6 +3022,461 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                <h1 id="mediopago">MedioPago</h1>
+
+    <p>Controlador para gestionar los medios de pago.</p>
+
+                                <h2 id="mediopago-GETapi-mediosPagos">Display a listing of the resource.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-mediosPagos">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/mediosPagos?nroPagina=1&amp;sinPaginar=1&amp;paginadoSimple=1&amp;ordenFechaCreado=DESC" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"nroPagina\": 4326.41688,
+    \"sinPaginar\": true,
+    \"paginadoSimple\": true,
+    \"ordenFechaCreado\": \"architecto\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/mediosPagos"
+);
+
+const params = {
+    "nroPagina": "1",
+    "sinPaginar": "1",
+    "paginadoSimple": "1",
+    "ordenFechaCreado": "DESC",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "nroPagina": 4326.41688,
+    "sinPaginar": true,
+    "paginadoSimple": true,
+    "ordenFechaCreado": "architecto"
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-mediosPagos">
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 34
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: {
+        &quot;ordenFechaCreado&quot;: [
+            &quot;validation.in&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-mediosPagos" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-mediosPagos"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-mediosPagos"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-mediosPagos" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-mediosPagos">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-mediosPagos" data-method="GET"
+      data-path="api/mediosPagos"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-mediosPagos', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-mediosPagos"
+                    onclick="tryItOut('GETapi-mediosPagos');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-mediosPagos"
+                    onclick="cancelTryOut('GETapi-mediosPagos');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-mediosPagos"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/mediosPagos</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-mediosPagos"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-mediosPagos"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>nroPagina</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="nroPagina"                data-endpoint="GETapi-mediosPagos"
+               value="1"
+               data-component="query">
+    <br>
+<p>Página a mostrar. Example: <code>1</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>sinPaginar</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-mediosPagos" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="1"
+                   data-endpoint="GETapi-mediosPagos"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-mediosPagos" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="0"
+                   data-endpoint="GETapi-mediosPagos"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Para evitar la paginación y devolver todos los registros. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>paginadoSimple</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-mediosPagos" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="1"
+                   data-endpoint="GETapi-mediosPagos"
+                   data-component="query"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-mediosPagos" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="0"
+                   data-endpoint="GETapi-mediosPagos"
+                   data-component="query"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Para realizar un paginado simple con anterior/siguiente, eficiente cuando se manejan muchos datos. Example: <code>true</code></p>
+            </div>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>ordenFechaCreado</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="ordenFechaCreado"                data-endpoint="GETapi-mediosPagos"
+               value="DESC"
+               data-component="query">
+    <br>
+<p>Ordenar por fecha de creación. Valores posibles: ASC, DESC. Example: <code>DESC</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>nroPagina</code></b>&nbsp;&nbsp;
+<small>number</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="nroPagina"                data-endpoint="GETapi-mediosPagos"
+               value="4326.41688"
+               data-component="body">
+    <br>
+<p>Example: <code>4326.41688</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>sinPaginar</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-mediosPagos" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="true"
+                   data-endpoint="GETapi-mediosPagos"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-mediosPagos" style="display: none">
+            <input type="radio" name="sinPaginar"
+                   value="false"
+                   data-endpoint="GETapi-mediosPagos"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>paginadoSimple</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <label data-endpoint="GETapi-mediosPagos" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="true"
+                   data-endpoint="GETapi-mediosPagos"
+                   data-component="body"             >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETapi-mediosPagos" style="display: none">
+            <input type="radio" name="paginadoSimple"
+                   value="false"
+                   data-endpoint="GETapi-mediosPagos"
+                   data-component="body"             >
+            <code>false</code>
+        </label>
+    <br>
+<p>Example: <code>true</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>ordenFechaCreado</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="ordenFechaCreado"                data-endpoint="GETapi-mediosPagos"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+        </form>
+
+                    <h2 id="mediopago-GETapi-mediosPagos--medioPago_id-">Display the specified resource.</h2>
+
+<p>
+</p>
+
+<p>Obtener datos de un registro</p>
+
+<span id="example-requests-GETapi-mediosPagos--medioPago_id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://127.0.0.1:8000/api/mediosPagos/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/mediosPagos/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-mediosPagos--medioPago_id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 33
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;Binance&quot;,
+    &quot;descripcion&quot;: &quot;Pago mediante Binance.&quot;,
+    &quot;reference_code&quot;: &quot;CC123456&quot;,
+    &quot;qr_pay&quot;: &quot;http://127.0.0.1:8000/storage/medios-pagos/01KF1P9ZN9XYM53EZ78QJW9A5H.jpg&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-mediosPagos--medioPago_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-mediosPagos--medioPago_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-mediosPagos--medioPago_id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-mediosPagos--medioPago_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-mediosPagos--medioPago_id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-mediosPagos--medioPago_id-" data-method="GET"
+      data-path="api/mediosPagos/{medioPago_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-mediosPagos--medioPago_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-mediosPagos--medioPago_id-"
+                    onclick="tryItOut('GETapi-mediosPagos--medioPago_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-mediosPagos--medioPago_id-"
+                    onclick="cancelTryOut('GETapi-mediosPagos--medioPago_id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-mediosPagos--medioPago_id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/mediosPagos/{medioPago_id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-mediosPagos--medioPago_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-mediosPagos--medioPago_id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>medioPago_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="medioPago_id"                data-endpoint="GETapi-mediosPagos--medioPago_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the medioPago. Example: <code>1</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-mediosPagos--medioPago_id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>ID del registro. Example: <code>1</code></p>
+            </div>
+                    </form>
+
                 <h1 id="methodology">Methodology</h1>
 
     <p>Controlador para gestionar las metodologías.</p>
@@ -3082,7 +3551,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 36
+x-ratelimit-remaining: 51
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -3352,7 +3821,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 35
+x-ratelimit-remaining: 50
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -3526,7 +3995,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
+x-ratelimit-remaining: 39
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -3796,7 +4265,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 58
+x-ratelimit-remaining: 38
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -3934,7 +4403,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "confirmed="\
     --form "paid="\
     --form "country_id=1"\
-    --form "ticket=@C:\Users\Jonas\AppData\Local\Temp\php10C7.tmp" </code></pre></div>
+    --form "ticket=@C:\Users\Jonas\AppData\Local\Temp\php2CD8.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -4154,7 +4623,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Comprobante de pago (imagen o PDF). Example: <code>C:\Users\Jonas\AppData\Local\Temp\php10C7.tmp</code></p>
+<p>Comprobante de pago (imagen o PDF). Example: <code>C:\Users\Jonas\AppData\Local\Temp\php2CD8.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>country_id</code></b>&nbsp;&nbsp;
@@ -4216,7 +4685,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 57
+x-ratelimit-remaining: 37
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -4413,7 +4882,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 28
+x-ratelimit-remaining: 43
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -4683,7 +5152,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 27
+x-ratelimit-remaining: 42
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReservationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -50,9 +51,12 @@ Route::apiResource('countries', App\Http\Controllers\CountryController::class)
     ->only(['index', 'show'])
     ->parameter('countries', 'country');
 
-Route::apiResource('reservations', App\Http\Controllers\ReservationController::class)
-    ->only(['store', 'show'])
-    ->parameter('reservations', 'reservation');
+// STORE protegido
+Route::post('reservations', [ReservationController::class, 'store'])
+    ->middleware('throttle:reservations-store');
+
+// SHOW sin límite
+Route::get('reservations/{reservation}', [ReservationController::class, 'show']);
 
 Route::apiResource('courseContents', App\Http\Controllers\CourseContentController::class)
     ->only(['index', 'show'])
