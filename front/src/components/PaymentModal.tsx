@@ -97,13 +97,13 @@ export const PaymentModal = ({
 
               {/* QR Code placeholder */}
               <div className="flex flex-col items-center gap-4">
-                <div className="w-48 h-48 bg-white rounded-xl p-4 flex items-center justify-center border border-border">
+                <div className="w-64 h-64 bg-white rounded-xl p-4 flex items-center justify-center border border-border">
                   {/* Placeholder QR - in production this would be a real QR code */}
                   {paymentMethod?.qr_pay ? (
                     <img
                       src={paymentMethod.qr_pay}
                       alt="QR Pago"
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-cover"
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-muted to-muted/50 rounded-lg flex items-center justify-center">
