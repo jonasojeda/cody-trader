@@ -29,6 +29,7 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
     lastName: "",
     email: "",
     phone: "",
+    telegramUser: "",
     countryId: "",
     comments: ""
   });
@@ -163,6 +164,10 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
       // Send current date as reservation_date
       formPayload.append("reservation_date", new Date().toISOString().split('T')[0]);
 
+      if (formData.telegramUser.trim()) {
+        formPayload.append("telegram_user", formData.telegramUser);
+      }
+
       if (receiptFile) {
         formPayload.append("ticket", receiptFile);
       }
@@ -186,6 +191,7 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
         lastName: "",
         email: "",
         phone: "",
+        telegramUser: "",
         countryId: "",
         comments: ""
       });
@@ -277,6 +283,22 @@ export const RegistrationForm = ({ isOpen, onClose, onSuccess, requiresReceipt =
               className="bg-muted border-border"
               maxLength={20}
             />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="telegramUser">Usuario de Telegram (opcional)</Label>
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">@</span>
+              <Input
+                id="telegramUser"
+                type="text"
+                placeholder="usuario"
+                value={formData.telegramUser}
+                onChange={(e) => setFormData(prev => ({ ...prev, telegramUser: e.target.value }))}
+                className="bg-muted border-border pl-7"
+                maxLength={50}
+              />
+            </div>
           </div>
 
           <div className="space-y-2">
