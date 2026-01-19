@@ -10,6 +10,29 @@ export const InstructorsSection = () => {
 
   const instructors = instructorsResponse?.data || [];
 
+  const stats = [
+    {
+      value: "30+",
+      label: "Años combinados",
+      color: "#ffffff",
+    },
+    {
+      value: "3",
+      label: "Mentores activos",
+      color: "#00ff00",
+    },
+    {
+      value: "100%",
+      label: "Traders reales",
+      color: "#00ff00",
+    },
+    {
+      value: "24/7",
+      label: "Soporte disponible",
+      color: "#ffffff",
+    },
+  ];
+
   return (
     <section id="instructores" className="relative py-24 overflow-hidden">
       {/* Background */}
@@ -41,31 +64,34 @@ export const InstructorsSection = () => {
         </div>
 
         <div
-          className={`grid gap-8 ${instructors.length === 1
-            ? "grid-cols-1"
-            : instructors.length === 2
-              ? "md:grid-cols-2"
-              : "md:grid-cols-2 lg:grid-cols-3"
-            }`}
+          className={`grid gap-8 ${
+            instructors.length === 1
+              ? "grid-cols-1"
+              : instructors.length === 2
+                ? "md:grid-cols-2"
+                : "md:grid-cols-2 lg:grid-cols-3"
+          }`}
         >
           {instructors.map((instructor) => (
             <div
               key={instructor.id}
-              className={`group card-elevated rounded-2xl overflow-hidden border border-border/50 hover:border-secondary/50 transition-all duration-300 ${instructors.length <= 2 ? "flex flex-col md:flex-row" : ""
-                }`}
+              className={`group card-elevated rounded-2xl overflow-hidden border border-border/50 hover:border-secondary/50 transition-all duration-300 ${
+                instructors.length <= 2 ? "flex flex-col md:flex-row" : ""
+              }`}
             >
               {/* Image */}
               <div
-                className={`relative overflow-hidden ${instructors.length <= 2
-                  ? "w-full md:w-2/5 h-50 md:h-auto"
-                  : "h-56"
-                  }`}
+                className={`relative overflow-hidden ${
+                  instructors.length <= 2
+                    ? "w-full md:w-2/5 h-50 md:h-auto"
+                    : "h-56"
+                }`}
               >
                 <img
                   src={
                     instructor.image ||
                     `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                      instructor.name
+                      instructor.name,
                     )}&background=random&size=400`
                   }
                   alt={instructor.name}
@@ -83,8 +109,9 @@ export const InstructorsSection = () => {
 
               {/* Content */}
               <div
-                className={`p-5 ${instructors.length <= 2 ? "w-full md:w-3/5" : ""
-                  }`}
+                className={`p-5 ${
+                  instructors.length <= 2 ? "w-full md:w-3/5" : ""
+                }`}
               >
                 <div className="mb-4">
                   <h3 className="font-display font-bold text-xl text-foreground group-hover:text-secondary transition-colors">
@@ -129,30 +156,20 @@ export const InstructorsSection = () => {
 
         {/* Team stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="text-center p-6 rounded-xl bg-muted/30 border border-border/30">
-            <p className="text-3xl font-display font-bold text-foreground mb-1">
-              30+
-            </p>
-            <p className="text-sm text-muted-foreground">Años combinados</p>
-          </div>
-          <div className="text-center p-6 rounded-xl bg-muted/30 border border-border/30">
-            <p className="text-3xl font-display font-bold text-secondary mb-1">
-              3
-            </p>
-            <p className="text-sm text-muted-foreground">Mentores activos</p>
-          </div>
-          <div className="text-center p-6 rounded-xl bg-muted/30 border border-border/30">
-            <p className="text-3xl font-display font-bold text-primary mb-1">
-              100%
-            </p>
-            <p className="text-sm text-muted-foreground">Traders reales</p>
-          </div>
-          <div className="text-center p-6 rounded-xl bg-muted/30 border border-border/30">
-            <p className="text-3xl font-display font-bold text-foreground mb-1">
-              24/7
-            </p>
-            <p className="text-sm text-muted-foreground">Soporte disponible</p>
-          </div>
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className="text-center p-6 rounded-xl bg-muted/30 border border-border/30"
+            >
+              <p
+                className={`text-3xl font-display font-bold mb-1 ${!stat.color.startsWith("#") ? stat.color : ""}`}
+                style={stat.color.startsWith("#") ? { color: stat.color } : {}}
+              >
+                {stat.value}
+              </p>
+              <p className="text-sm text-muted-foreground">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
