@@ -52,8 +52,8 @@ Route::apiResource('countries', App\Http\Controllers\CountryController::class)
     ->parameter('countries', 'country');
 
 // STORE protegido
-Route::post('reservations', [ReservationController::class, 'store'])
-    ->middleware('throttle:reservations-store');
+Route::post('reservations', [ReservationController::class, 'store']);
+// ->middleware('throttle:reservations-store');
 
 // SHOW sin límite
 Route::get('reservations/{reservation}', [ReservationController::class, 'show']);
