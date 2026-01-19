@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { TrendingUp, Mail, Shield } from "lucide-react";
 import teralLogo from "@/assets/teral-logo.png";
+import isotipo from "../assets/ISOTIPO.PNG";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
 
@@ -63,9 +64,9 @@ export const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                <TrendingUp className="h-5 w-5 text-primary" />
-              </div>
+              {/* <div className="w-10 h-10 rounded-lg flex items-center justify-center"> */}
+              <img src={isotipo} alt="Cody Trader Logo" className="h-6 w-6 object-contain" />
+              {/* </div> */}
               <span className="font-display font-bold text-lg">
                 {footerData.brand_name}
               </span>
