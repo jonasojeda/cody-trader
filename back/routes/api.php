@@ -65,3 +65,7 @@ Route::apiResource('courseContents', App\Http\Controllers\CourseContentControlle
 Route::apiResource('mediosPagos', App\Http\Controllers\MedioPagoController::class)
     ->only(['index', 'show'])
     ->parameter('mediosPagos', 'medioPago');
+
+Route::apiResource('stats', App\Http\Controllers\StatsController::class)
+    ->only(['index', 'show'])
+    ->parameter('stats', 'stat');
