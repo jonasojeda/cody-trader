@@ -51,8 +51,11 @@ class InstructorSeeder extends Seeder
             ]
         ];
 
+
         foreach ($instructors as $instructor) {
-            Instructor::create($instructor);
+            if (!Instructor::where('name', $instructor['name'])->exists()) {
+                Instructor::create($instructor);
+            }
         }
     }
 }
