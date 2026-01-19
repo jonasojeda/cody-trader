@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TrendingUp, Mail, Shield } from "lucide-react";
 import teralLogo from "@/assets/teral-logo.png";
-import isotipo from "../assets/ISOTIPO.PNG";
+import isotipo from "../assets/ISOTIPO.png";
 import { useQuery } from "@tanstack/react-query";
 import { api } from "@/lib/api";
 

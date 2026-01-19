@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
-import isotipo from "../assets/ISOTIPO.PNG";
+import isotipo from "../assets/ISOTIPO.png";
 import { ThemeToggle } from "./ThemeToggle";
 
 interface HeaderProps {
