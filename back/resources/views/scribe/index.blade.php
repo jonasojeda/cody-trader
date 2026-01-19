@@ -218,7 +218,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: January 18, 2026</li>
+        <li>Last updated: January 19, 2026</li>
     </ul>
 </div>
 
@@ -305,23 +305,28 @@ fetch(url, {
 
 <span id="example-responses-GETapi-blogs">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (422):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 47
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;message&quot;: {
+        &quot;ordenFechaCreado&quot;: [
+            &quot;validation.in&quot;
+        ],
+        &quot;orden&quot;: [
+            &quot;validation.in&quot;
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -597,23 +602,26 @@ fetch(url, {
 
 <span id="example-responses-GETapi-blogs--id-">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 46
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;id&quot;: 1,
+    &quot;order&quot;: 1,
+    &quot;title&quot;: &quot;Introducci&oacute;n al Trading de Criptomonedas&quot;,
+    &quot;description&quot;: &quot;Aprende los conceptos fundamentales del trading de criptomonedas. En este video exploramos las bases del mercado crypto, c&oacute;mo funcionan los exchanges, y las estrategias b&aacute;sicas que todo trader debe conocer antes de comenzar su camino en este emocionante mundo financiero.&quot;,
+    &quot;thumbnail&quot;: &quot;http://127.0.0.1:8000/storage/blogs/01KEZD9H1KVEMQ0F0VZKST46F6.webp&quot;,
+    &quot;youtubeId&quot;: &quot;dQw4w9WgXcQ&quot;
 }</code>
  </pre>
     </span>
@@ -768,23 +776,25 @@ fetch(url, {
 
 <span id="example-responses-GETapi-courseContents">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (422):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 42
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;message&quot;: {
+        &quot;ordenFechaCreado&quot;: [
+            &quot;validation.in&quot;
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -1036,23 +1046,48 @@ fetch(url, {
 
 <span id="example-responses-GETapi-courseContents--id-">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 41
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;id&quot;: 1,
+    &quot;title&quot;: &quot;Programa Completo de Trading&quot;,
+    &quot;academy&quot;: &quot;Academia Cody Trader&quot;,
+    &quot;price&quot;: &quot;90.00&quot;,
+    &quot;currency&quot;: &quot;ARS&quot;,
+    &quot;description&quot;: [
+        {
+            &quot;icon&quot;: &quot;bell-electric&quot;,
+            &quot;text&quot;: &quot;Acceso por 12 mesesssss&quot;
+        },
+        {
+            &quot;icon&quot;: &quot;Users&quot;,
+            &quot;text&quot;: &quot;Comunidad privada incluida&quot;
+        },
+        {
+            &quot;icon&quot;: &quot;trending-up&quot;,
+            &quot;text&quot;: &quot;Sesiones en vivo semanales&quot;
+        }
+    ],
+    &quot;content&quot;: [
+        &quot;M&oacute;dulos completos de formaci&oacute;n&quot;,
+        &quot;Acceso a la metodolog&iacute;a documentada&quot;,
+        &quot;Plantillas y herramientas de an&aacute;lisis&quot;,
+        &quot;Soporte directo con el mentor&quot;,
+        &quot;Cualquier cosa&quot;
+    ],
+    &quot;created_at&quot;: &quot;2026-01-17T05:07:41.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2026-01-17T05:42:30.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -1219,23 +1254,25 @@ fetch(url, {
 
 <span id="example-responses-GETapi-credentials">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (422):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 51
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;message&quot;: {
+        &quot;ordenFechaCreado&quot;: [
+            &quot;validation.in&quot;
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -1487,23 +1524,25 @@ fetch(url, {
 
 <span id="example-responses-GETapi-credentials--id-">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 50
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;id&quot;: 1,
+    &quot;icon&quot;: &quot;Clock&quot;,
+    &quot;value&quot;: &quot;8+&quot;,
+    &quot;label&quot;: &quot;A&ntilde;os de experiencia&quot;,
+    &quot;description&quot;: &quot;Operando en mercados financieros globales&quot;
 }</code>
  </pre>
     </span>
@@ -1658,23 +1697,25 @@ fetch(url, {
 
 <span id="example-responses-GETapi-footers">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (422):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 55
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;message&quot;: {
+        &quot;ordenFechaCreado&quot;: [
+            &quot;validation.in&quot;
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -1926,23 +1967,74 @@ fetch(url, {
 
 <span id="example-responses-GETapi-footers--id-">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 54
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;id&quot;: 1,
+    &quot;brand_name&quot;: &quot;Academia Cody Trader&quot;,
+    &quot;brand_description&quot;: &quot;Formaci&oacute;n profesional en mercados financieros. Metodolog&iacute;a basada en datos y gesti&oacute;n de riesgo.&quot;,
+    &quot;contact_email&quot;: &quot;contacto@academiacodytrader.com&quot;,
+    &quot;social_links&quot;: [
+        {
+            &quot;url&quot;: &quot;https://t.me/&quot;,
+            &quot;name&quot;: &quot;Telegram&quot;,
+            &quot;color&quot;: &quot;#229ED9&quot;,
+            &quot;active&quot;: true
+        },
+        {
+            &quot;url&quot;: &quot;https://wa.me/&quot;,
+            &quot;name&quot;: &quot;WhatsApp&quot;,
+            &quot;color&quot;: &quot;#25D366&quot;,
+            &quot;active&quot;: true
+        },
+        {
+            &quot;url&quot;: &quot;https://facebook.com/&quot;,
+            &quot;name&quot;: &quot;Facebook&quot;,
+            &quot;color&quot;: &quot;#1877F2&quot;,
+            &quot;active&quot;: true
+        },
+        {
+            &quot;url&quot;: &quot;https://x.com/&quot;,
+            &quot;name&quot;: &quot;X (Twitter)&quot;,
+            &quot;color&quot;: &quot;#ffffff&quot;,
+            &quot;active&quot;: true
+        },
+        {
+            &quot;url&quot;: &quot;https://instagram.com/&quot;,
+            &quot;name&quot;: &quot;Instagram&quot;,
+            &quot;color&quot;: &quot;#E4405F&quot;,
+            &quot;active&quot;: true
+        }
+    ],
+    &quot;navigation_links&quot;: [
+        {
+            &quot;url&quot;: &quot;#metodologia&quot;,
+            &quot;label&quot;: &quot;Metodolog&iacute;a&quot;
+        },
+        {
+            &quot;url&quot;: &quot;#aprenderas&quot;,
+            &quot;label&quot;: &quot;Programa&quot;
+        },
+        {
+            &quot;url&quot;: &quot;#autoridad&quot;,
+            &quot;label&quot;: &quot;Credenciales&quot;
+        }
+    ],
+    &quot;risk_disclaimer&quot;: &quot;Aviso de riesgo: El trading en mercados financieros implica riesgos significativos de p&eacute;rdida. Los resultados pasados no garantizan resultados futuros. Este programa es estrictamente educativo y no constituye asesor&iacute;a de inversi&oacute;n. Opera &uacute;nicamente con capital que puedas permitirte perder.&quot;,
+    &quot;copyright_text&quot;: &quot;Academia Cody Trader. Todos los derechos reservados.&quot;,
+    &quot;created_at&quot;: &quot;2026-01-12T22:53:47.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2026-01-12T22:53:47.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -2097,23 +2189,25 @@ fetch(url, {
 
 <span id="example-responses-GETapi-instructors">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (422):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 53
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;message&quot;: {
+        &quot;ordenFechaCreado&quot;: [
+            &quot;validation.in&quot;
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -2365,23 +2459,31 @@ fetch(url, {
 
 <span id="example-responses-GETapi-instructors--id-">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 52
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;Carlos Mendoza&quot;,
+    &quot;role&quot;: &quot;Director de Formaci&oacute;n&quot;,
+    &quot;experience&quot;: &quot;12 a&ntilde;os en mercados&quot;,
+    &quot;specialty&quot;: &quot;Price Action &amp; Estructura&quot;,
+    &quot;achievements&quot;: [
+        &quot;Ex-trader institucional&quot;,
+        &quot;Certificaci&oacute;n CMT&quot;,
+        &quot;+2,000 alumnos formados&quot;
+    ],
+    &quot;image&quot;: &quot;http://127.0.0.1:8000/storage/instructors/01KEZ52EW053VMF9ZWPHNBF5HC.webp&quot;
 }</code>
  </pre>
     </span>
@@ -2536,23 +2638,25 @@ fetch(url, {
 
 <span id="example-responses-GETapi-learnings">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (422):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;message&quot;: {
+        &quot;ordenFechaCreado&quot;: [
+            &quot;validation.in&quot;
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -2804,23 +2908,31 @@ fetch(url, {
 
 <span id="example-responses-GETapi-learnings--id-">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 58
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;id&quot;: 1,
+    &quot;icon&quot;: &quot;BookOpen&quot;,
+    &quot;title&quot;: &quot;Lectura de mercado&quot;,
+    &quot;topics&quot;: [
+        &quot;Estructura de mercado y fases&quot;,
+        &quot;Zonas de oferta y demanda&quot;,
+        &quot;An&aacute;lisis multi-temporal&quot;,
+        &quot;Identificaci&oacute;n de tendencias&quot;
+    ],
+    &quot;created_at&quot;: &quot;2026-01-12T22:53:47.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2026-01-12T22:53:47.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -2975,23 +3087,25 @@ fetch(url, {
 
 <span id="example-responses-GETapi-mediosPagos">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (422):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 40
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;message&quot;: {
+        &quot;ordenFechaCreado&quot;: [
+            &quot;validation.in&quot;
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -3243,23 +3357,25 @@ fetch(url, {
 
 <span id="example-responses-GETapi-mediosPagos--medioPago_id-">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 39
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;Binance&quot;,
+    &quot;descripcion&quot;: &quot;Pago mediante Binance.&quot;,
+    &quot;reference_code&quot;: &quot;CC123456&quot;,
+    &quot;qr_pay&quot;: &quot;http://127.0.0.1:8000/storage/medios-pagos/01KF9WEYC34MXWCB9RJXMDF228.jpg&quot;
 }</code>
  </pre>
     </span>
@@ -3426,23 +3542,25 @@ fetch(url, {
 
 <span id="example-responses-GETapi-methodologies">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (422):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 57
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;message&quot;: {
+        &quot;ordenFechaCreado&quot;: [
+            &quot;validation.in&quot;
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -3694,23 +3812,26 @@ fetch(url, {
 
 <span id="example-responses-GETapi-methodologies--id-">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 56
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;id&quot;: 1,
+    &quot;icon&quot;: &quot;Target&quot;,
+    &quot;title&quot;: &quot;Reglas claras&quot;,
+    &quot;description&quot;: &quot;Sistema de trading con entradas y salidas definidas. Sin ambig&uuml;edades ni interpretaciones subjetivas.&quot;,
+    &quot;created_at&quot;: &quot;2026-01-12T22:53:47.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2026-01-12T22:53:47.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -3865,23 +3986,25 @@ fetch(url, {
 
 <span id="example-responses-GETapi-countries">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (422):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 45
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;message&quot;: {
+        &quot;ordenFechaCreado&quot;: [
+            &quot;validation.in&quot;
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -4133,23 +4256,24 @@ fetch(url, {
 
 <span id="example-responses-GETapi-countries--id-">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 44
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;Argentina&quot;,
+    &quot;created_at&quot;: &quot;2026-01-17T02:23:19.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2026-01-17T02:23:19.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -4275,11 +4399,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "last_name=Perez"\
     --form "email=juan@example.com"\
     --form "phone=123456789"\
+    --form "telegram_user=@juanperez"\
     --form "reservation_date=2024-01-20"\
     --form "confirmed="\
     --form "paid="\
     --form "country_id=1"\
-    --form "ticket=@C:\Users\Jonas\AppData\Local\Temp\phpBFFF.tmp" </code></pre></div>
+    --form "ticket=@C:\Users\Jonas\AppData\Local\Temp\phpAB0D.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -4297,6 +4422,7 @@ body.append('name', 'Juan');
 body.append('last_name', 'Perez');
 body.append('email', 'juan@example.com');
 body.append('phone', '123456789');
+body.append('telegram_user', '@juanperez');
 body.append('reservation_date', '2024-01-20');
 body.append('confirmed', '');
 body.append('paid', '');
@@ -4434,6 +4560,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>Teléfono del cliente. Example: <code>123456789</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>telegram_user</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="telegram_user"                data-endpoint="POSTapi-reservations"
+               value="@juanperez"
+               data-component="body">
+    <br>
+<p>Usuario de Telegram del cliente. Example: <code>@juanperez</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>reservation_date</code></b>&nbsp;&nbsp;
 <small>date</small>&nbsp;
  &nbsp;
@@ -4499,7 +4637,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Comprobante de pago (imagen o PDF). Example: <code>C:\Users\Jonas\AppData\Local\Temp\phpBFFF.tmp</code></p>
+<p>Comprobante de pago (imagen o PDF). Example: <code>C:\Users\Jonas\AppData\Local\Temp\phpAB0D.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>country_id</code></b>&nbsp;&nbsp;
@@ -4552,23 +4690,38 @@ fetch(url, {
 
 <span id="example-responses-GETapi-reservations--reservation_id-">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 43
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;Jonas&quot;,
+    &quot;last_name&quot;: &quot;Ojeda&quot;,
+    &quot;email&quot;: &quot;jonojed@gmail.com&quot;,
+    &quot;phone&quot;: &quot;3856979948&quot;,
+    &quot;reservation_date&quot;: &quot;2026-01-16 00:00:00&quot;,
+    &quot;confirmed&quot;: 1,
+    &quot;paid&quot;: 1,
+    &quot;country_id&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Argentina&quot;,
+        &quot;created_at&quot;: &quot;2026-01-17T02:23:19.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2026-01-17T02:23:19.000000Z&quot;
+    },
+    &quot;ticket_url&quot;: &quot;http://127.0.0.1:8000/storage/tickets/X1XlkbXblfARPbLenbSKk3uq0FwKOQQQm6ChxhkQ.jpg&quot;,
+    &quot;telegram_user&quot;: null,
+    &quot;created_at&quot;: &quot;2026-01-17T02:54:12.000000Z&quot;,
+    &quot;updated_at&quot;: &quot;2026-01-17T02:54:12.000000Z&quot;
 }</code>
  </pre>
     </span>
@@ -4735,23 +4888,25 @@ fetch(url, {
 
 <span id="example-responses-GETapi-slides">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (422):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 49
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;message&quot;: {
+        &quot;ordenFechaCreado&quot;: [
+            &quot;validation.in&quot;
+        ]
+    }
 }</code>
  </pre>
     </span>
@@ -5003,23 +5158,48 @@ fetch(url, {
 
 <span id="example-responses-GETapi-slides--id-">
             <blockquote>
-            <p>Example response (429):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">x-ratelimit-limit: 0
-x-ratelimit-remaining: 0
-retry-after: 52
-x-ratelimit-reset: 1768783874
-cache-control: no-cache, private
+            <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 48
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Too Many Attempts.&quot;
+    &quot;id&quot;: 1,
+    &quot;title&quot;: &quot;Aprende trading con una metodolog&iacute;a&quot;,
+    &quot;highlight&quot;: &quot;profesional, medible y basada en datos&quot;,
+    &quot;tag&quot;: &quot;Metodolog&iacute;a profesional verificable&quot;,
+    &quot;description&quot;: &quot;Formaci&oacute;n real en mercados financieros, gesti&oacute;n de riesgo y toma de decisiones. Sin promesas falsas, solo resultados documentados.&quot;,
+    &quot;primary_btn_text&quot;: &quot;Acceder al programa&quot;,
+    &quot;primary_btn_link&quot;: &quot;#cart&quot;,
+    &quot;secondary_btn_text&quot;: &quot;Ver metodolog&iacute;a&quot;,
+    &quot;secondary_btn_link&quot;: &quot;#metodologia&quot;,
+    &quot;image&quot;: &quot;http://127.0.0.1:8000/storage/slides/01KETB9G7AMYHWVYTCVYF3HGEQ.jpg&quot;,
+    &quot;floating_card_title&quot;: &quot;+340 ops&quot;,
+    &quot;floating_card_description&quot;: &quot;Backtesting&quot;,
+    &quot;floating_card_icon&quot;: &quot;BarChart3&quot;,
+    &quot;indicators&quot;: [
+        {
+            &quot;icon&quot;: &quot;Shield&quot;,
+            &quot;text&quot;: &quot;Gesti&oacute;n de riesgo&quot;,
+            &quot;color&quot;: &quot;text-primary&quot;
+        },
+        {
+            &quot;icon&quot;: &quot;BarChart3&quot;,
+            &quot;text&quot;: &quot;Resultados auditables&quot;,
+            &quot;color&quot;: &quot;text-secondary&quot;
+        }
+    ],
+    &quot;expiration&quot;: false,
+    &quot;expiration_date&quot;: null,
+    &quot;activation_date&quot;: null
 }</code>
  </pre>
     </span>

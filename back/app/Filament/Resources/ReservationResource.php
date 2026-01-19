@@ -44,6 +44,17 @@ class ReservationResource extends Resource
                     ->tel()
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('telegram_user')
+                    ->label('Usuario de Telegram')
+                    ->maxLength(255)
+                    ->prefix('@')
+                    ->suffixAction(
+                        Forms\Components\Actions\Action::make('openTelegram')
+                            ->icon('heroicon-o-arrow-top-right-on-square')
+                            ->url(fn ($state) => $state ? "https://t.me/{$state}" : null)
+                            ->openUrlInNewTab()
+                            ->visible(fn ($state) => filled($state))
+                    ),
                 Forms\Components\DateTimePicker::make('reservation_date')
                     ->label('Fecha de Reservación')
                     ->required(),
