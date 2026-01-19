@@ -297,6 +297,10 @@ export const api = {
       sinPaginar: true,
       ordenFechaCreado: "DESC"
     }),
+  getMediosPagos: () =>
+    fetchApi<PaginatedResponse<MedioPago>>("mediosPagos", {
+      sinPaginar: true,
+    }),
 };
 
 export interface Country {
@@ -309,6 +313,14 @@ export interface Country {
 export interface CourseContentDescription {
   icon: string;
   text: string;
+}
+
+export interface MedioPago {
+  id: number;
+  name: string;
+  descripcion: string;
+  reference_code: string;
+  qr_pay: string;
 }
 
 export interface CourseContent {

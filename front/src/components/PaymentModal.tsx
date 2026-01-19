@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { QrCode, ArrowRight, Copy, CheckCircle2, Loader2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
-import { api, CourseContent } from "@/lib/api";
+import { api, CourseContent, MedioPago } from "@/lib/api";
 
 interface PaymentModalProps {
   isOpen: boolean;
@@ -19,6 +19,7 @@ export const PaymentModal = ({
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(true);
   const [courseContent, setCourseContent] = useState<CourseContent | null>(null);
+  const [paymentMethod, setPaymentMethod] = useState<MedioPago | null>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -29,9 +30,17 @@ export const PaymentModal = ({
   const loadCourseContent = async () => {
     try {
       setLoading(true);
-      const response = await api.getCourseContents();
-      if (response.data && response.data.length > 0) {
-        setCourseContent(response.data[0]);
+      const [contentResponse, paymentResponse] = await Promise.all([
+        api.getCourseContents(),
+        api.getMediosPagos(),
+      ]);
+
+      if (contentResponse.data && contentResponse.data.length > 0) {
+        setCourseContent(contentResponse.data[0]);
+      }
+
+      if (paymentResponse.data && paymentResponse.data.length > 0) {
+        setPaymentMethod(paymentResponse.data[0]);
       }
     } catch (error) {
       console.error("Error loading course content:", error);
@@ -48,7 +57,7 @@ export const PaymentModal = ({
   const handleCopyReference = () => {
     if (courseContent) {
       // In a real app we might get payment reference from API too
-      navigator.clipboard.writeText("CODY-TRADER-2024");
+      navigator.clipboard.writeText(paymentMethod?.reference_code || "");
       setCopied(true);
       toast({
         title: "Copiado",
@@ -90,9 +99,17 @@ export const PaymentModal = ({
               <div className="flex flex-col items-center gap-4">
                 <div className="w-48 h-48 bg-white rounded-xl p-4 flex items-center justify-center border border-border">
                   {/* Placeholder QR - in production this would be a real QR code */}
-                  <div className="w-full h-full bg-gradient-to-br from-muted to-muted/50 rounded-lg flex items-center justify-center">
-                    <QrCode className="h-24 w-24 text-foreground/20" />
-                  </div>
+                  {paymentMethod?.qr_pay ? (
+                    <img
+                      src={paymentMethod.qr_pay}
+                      alt="QR Pago"
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-muted to-muted/50 rounded-lg flex items-center justify-center">
+                      <QrCode className="h-24 w-24 text-foreground/20" />
+                    </div>
+                  )}
                 </div>
                 <p className="text-sm text-muted-foreground text-center">
                   Escanead el código QR para realizar el pago
@@ -106,7 +123,7 @@ export const PaymentModal = ({
                 </p>
                 <div className="flex items-center justify-between gap-2">
                   <code className="text-sm font-mono text-foreground bg-background px-3 py-2 rounded-lg flex-1">
-                    CODY-TRADER-2024
+                    {paymentMethod?.reference_code || "Cargando..."}
                   </code>
                   <Button
                     size="sm"
