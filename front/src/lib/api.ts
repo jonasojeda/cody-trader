@@ -301,7 +301,18 @@ export const api = {
     fetchApi<PaginatedResponse<MedioPago>>("mediosPagos", {
       sinPaginar: true,
     }),
+  getStats: () =>
+    fetchApi<PaginatedResponse<Stat>>("stats", {
+      sinPaginar: true,
+    }),
 };
+
+export interface Stat {
+  id: number;
+  value: string;
+  label: string;
+  color: string;
+}
 
 export interface Country {
   id: number;

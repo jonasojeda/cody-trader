@@ -8,30 +8,13 @@ export const InstructorsSection = () => {
     queryFn: api.getInstructors,
   });
 
-  const instructors = instructorsResponse?.data || [];
+  const { data: statsResponse } = useQuery({
+    queryKey: ["stats"],
+    queryFn: api.getStats,
+  });
 
-  const stats = [
-    {
-      value: "30+",
-      label: "Años combinados",
-      color: "#ffffff",
-    },
-    {
-      value: "3",
-      label: "Mentores activos",
-      color: "#00ff00",
-    },
-    {
-      value: "100%",
-      label: "Traders reales",
-      color: "#00ff00",
-    },
-    {
-      value: "24/7",
-      label: "Soporte disponible",
-      color: "#ffffff",
-    },
-  ];
+  const instructors = instructorsResponse?.data || [];
+  const stats = statsResponse?.data || [];
 
   return (
     <section id="instructores" className="relative py-24 overflow-hidden">
@@ -64,28 +47,25 @@ export const InstructorsSection = () => {
         </div>
 
         <div
-          className={`grid gap-8 ${
-            instructors.length === 1
+          className={`grid gap-8 ${instructors.length === 1
               ? "grid-cols-1"
               : instructors.length === 2
                 ? "md:grid-cols-2"
                 : "md:grid-cols-2 lg:grid-cols-3"
-          }`}
+            }`}
         >
           {instructors.map((instructor) => (
             <div
               key={instructor.id}
-              className={`group card-elevated rounded-2xl overflow-hidden border border-border/50 hover:border-secondary/50 transition-all duration-300 ${
-                instructors.length <= 2 ? "flex flex-col md:flex-row" : ""
-              }`}
+              className={`group card-elevated rounded-2xl overflow-hidden border border-border/50 hover:border-secondary/50 transition-all duration-300 ${instructors.length <= 2 ? "flex flex-col md:flex-row" : ""
+                }`}
             >
               {/* Image */}
               <div
-                className={`relative overflow-hidden ${
-                  instructors.length <= 2
+                className={`relative overflow-hidden ${instructors.length <= 2
                     ? "w-full md:w-2/5 h-50 md:h-auto"
                     : "h-56"
-                }`}
+                  }`}
               >
                 <img
                   src={
@@ -109,9 +89,8 @@ export const InstructorsSection = () => {
 
               {/* Content */}
               <div
-                className={`p-5 ${
-                  instructors.length <= 2 ? "w-full md:w-3/5" : ""
-                }`}
+                className={`p-5 ${instructors.length <= 2 ? "w-full md:w-3/5" : ""
+                  }`}
               >
                 <div className="mb-4">
                   <h3 className="font-display font-bold text-xl text-foreground group-hover:text-secondary transition-colors">
