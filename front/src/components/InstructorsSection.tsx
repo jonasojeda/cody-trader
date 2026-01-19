@@ -40,14 +40,27 @@ export const InstructorsSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          className={`grid gap-8 ${instructors.length === 1
+            ? "grid-cols-1"
+            : instructors.length === 2
+              ? "md:grid-cols-2"
+              : "md:grid-cols-2 lg:grid-cols-3"
+            }`}
+        >
           {instructors.map((instructor) => (
             <div
               key={instructor.id}
-              className="group card-elevated rounded-2xl overflow-hidden border border-border/50 hover:border-secondary/50 transition-all duration-300"
+              className={`group card-elevated rounded-2xl overflow-hidden border border-border/50 hover:border-secondary/50 transition-all duration-300 ${instructors.length <= 2 ? "flex flex-col md:flex-row" : ""
+                }`}
             >
               {/* Image */}
-              <div className="relative h-64 overflow-hidden">
+              <div
+                className={`relative overflow-hidden ${instructors.length <= 2
+                  ? "w-full md:w-2/5 h-50 md:h-auto"
+                  : "h-56"
+                  }`}
+              >
                 <img
                   src={
                     instructor.image ||
@@ -69,7 +82,10 @@ export const InstructorsSection = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6">
+              <div
+                className={`p-5 ${instructors.length <= 2 ? "w-full md:w-3/5" : ""
+                  }`}
+              >
                 <div className="mb-4">
                   <h3 className="font-display font-bold text-xl text-foreground group-hover:text-secondary transition-colors">
                     {instructor.name}
