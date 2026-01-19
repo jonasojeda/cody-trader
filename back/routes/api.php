@@ -57,3 +57,7 @@ Route::apiResource('reservations', App\Http\Controllers\ReservationController::c
 Route::apiResource('courseContents', App\Http\Controllers\CourseContentController::class)
     ->only(['index', 'show'])
     ->parameter('courseContent', 'courseContent');
+
+Route::apiResource('mediosPagos', App\Http\Controllers\MedioPagoController::class)
+    ->only(['index', 'show'])
+    ->parameter('mediosPagos', 'medioPago');
