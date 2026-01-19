@@ -21,6 +21,7 @@ class Reservation extends Model
         'paid',
         'ticket',
         'country_id',
+        'telegram_user',
     ];
 
     //Relaciones
@@ -42,6 +43,7 @@ class Reservation extends Model
             'paid' => $this->paid,
             'country_id' => $this->country ? $this->country->obtenerDatos() : null,
             'ticket_url' => $this->ticket ? Storage::url($this->ticket) : null,
+            'telegram_user' => $this->telegram_user,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

@@ -32,6 +32,7 @@ class ReservationController extends Controller
      * @bodyParam last_name string required Apellido del cliente. Example: Perez
      * @bodyParam email string required Email del cliente. Example: juan@example.com
      * @bodyParam phone string required Teléfono del cliente. Example: 123456789
+     * @bodyParam telegram_user string Usuario de Telegram del cliente. Example: @juanperez
      * @bodyParam reservation_date date required Fecha de la reserva. Example: 2024-01-20
      * @bodyParam confirmed boolean Confirmado (0 o 1). Example: 0
      * @bodyParam paid boolean Pagado (0 o 1). Example: 0
@@ -45,6 +46,7 @@ class ReservationController extends Controller
             'last_name' => 'string|max:50|required',
             'email' => 'string|email|max:100|required',
             'phone' => 'string|max:20|required',
+            'telegram_user' => 'string|max:100|nullable',
             'reservation_date' => 'date|required',
             'confirmed' => ['boolean', Rule::in([0, 1])],
             'paid' => ['boolean', Rule::in([0, 1])],
@@ -62,6 +64,7 @@ class ReservationController extends Controller
         $last_name = $request->input('last_name');
         $email = $request->input('email');
         $phone = $request->input('phone');
+        $telegram_user = $request->input('telegram_user');
         $reservation_date = $request->input('reservation_date');
         $confirmed = $request->input('confirmed', 0);
         $paid = $request->input('paid', 0);
@@ -83,6 +86,7 @@ class ReservationController extends Controller
             'last_name' => $last_name,
             'email' => $email,
             'phone' => $phone,
+            'telegram_user' => $telegram_user,
             'reservation_date' => $reservation_date,
             'confirmed' => $confirmed,
             'paid' => $paid,
