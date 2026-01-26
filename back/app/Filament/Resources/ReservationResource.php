@@ -5,14 +5,19 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ReservationResource\Pages;
 use App\Filament\Resources\ReservationResource\RelationManagers;
 use App\Http\Clases\App;
+use App\Models\Country;
 use App\Models\Reservation;
+use App\Models\Student;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Hash;
 
 class ReservationResource extends Resource
 {
@@ -120,6 +125,110 @@ class ReservationResource extends Resource
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
+                Tables\Actions\Action::make('generateStudent')
+                    ->label('Generar Alumno')
+                    ->icon('heroicon-o-user-plus')
+                    ->color('success')
+                    ->visible(fn (Reservation $record): bool => !User::where('email', $record->email)->exists())
+                    ->form([
+                        Forms\Components\Section::make('Datos de Usuario')
+                            ->description('Credenciales de acceso al sistema')
+                            ->schema([
+                                Forms\Components\TextInput::make('email')
+                                    ->label('Correo Electrónico')
+                                    ->email()
+                                    ->required()
+                                    ->unique(table: 'users', column: 'email')
+                                    ->default(fn (Reservation $record) => $record->email)
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('password')
+                                    ->label('Contraseña')
+                                    ->password()
+                                    ->required()
+                                    ->minLength(8)
+                                    ->maxLength(255)
+                                    ->default(fn () => \Illuminate\Support\Str::random(12)),
+                            ])
+                            ->columns(2),
+
+                        Forms\Components\Section::make('Datos del Alumno')
+                            ->schema([
+                                Forms\Components\TextInput::make('name')
+                                    ->label('Nombre')
+                                    ->required()
+                                    ->default(fn (Reservation $record) => $record->name)
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('last_name')
+                                    ->label('Apellido')
+                                    ->required()
+                                    ->default(fn (Reservation $record) => $record->last_name)
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('phone')
+                                    ->label('Teléfono')
+                                    ->tel()
+                                    ->default(fn (Reservation $record) => $record->phone)
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('telegram_user')
+                                    ->label('Usuario de Telegram')
+                                    ->default(fn (Reservation $record) => $record->telegram_user)
+                                    ->maxLength(255)
+                                    ->prefix('@'),
+                                Forms\Components\Select::make('country_id')
+                                    ->label('País')
+                                    ->options(Country::pluck('name', 'id'))
+                                    ->searchable()
+                                    ->default(fn (Reservation $record) => $record->country_id)
+                                    ->required(),
+                                Forms\Components\DatePicker::make('registration_date')
+                                    ->label('Fecha de Registro')
+                                    ->default(now())
+                                    ->required(),
+                                Forms\Components\Toggle::make('is_active')
+                                    ->label('Activo')
+                                    ->default(true),
+                            ])
+                            ->columns(2),
+                    ])
+                    ->action(function (array $data, Reservation $record): void {
+                        // Verificar nuevamente que no exista el usuario
+                        if (User::where('email', $data['email'])->exists()) {
+                            Notification::make()
+                                ->title('Error')
+                                ->body('Ya existe un usuario con este correo electrónico.')
+                                ->danger()
+                                ->send();
+                            return;
+                        }
+
+                        // Crear el usuario
+                        $user = User::create([
+                            'name' => $data['name'] . ' ' . $data['last_name'],
+                            'email' => $data['email'],
+                            'password' => Hash::make($data['password']),
+                        ]);
+
+                        // Crear el estudiante
+                        Student::create([
+                            'name' => $data['name'],
+                            'last_name' => $data['last_name'],
+                            'phone' => $data['phone'],
+                            'telegram_user' => $data['telegram_user'],
+                            'country_id' => $data['country_id'],
+                            'user_id' => $user->id,
+                            'registration_date' => $data['registration_date'],
+                            'is_active' => $data['is_active'],
+                        ]);
+
+                        Notification::make()
+                            ->title('Alumno generado')
+                            ->body("Se ha creado el alumno {$data['name']} {$data['last_name']} exitosamente.")
+                            ->success()
+                            ->send();
+                    })
+                    ->modalHeading('Generar Alumno desde Reservación')
+                    ->modalDescription('Complete o edite los datos del alumno antes de crear.')
+                    ->modalSubmitActionLabel('Crear Alumno')
+                    ->requiresConfirmation(false),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
