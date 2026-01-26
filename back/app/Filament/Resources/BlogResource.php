@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\BlogResource\Pages;
 use App\Filament\Resources\BlogResource\RelationManagers;
+use App\Http\Clases\App;
 use App\Models\Blog;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -21,6 +22,7 @@ class BlogResource extends Resource
     protected static ?string $modelLabel = 'Blog';
     protected static ?string $pluralModelLabel = 'Blogs';
     protected static ?string $navigationLabel = 'Blogs';
+    protected static ?string $navigationGroup = App::FILAMENT_GROUP_LANDING;
 
     public static function form(Form $form): Form
     {

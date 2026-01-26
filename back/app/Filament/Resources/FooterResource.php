@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\FooterResource\Pages;
 use App\Filament\Resources\FooterResource\RelationManagers;
+use App\Http\Clases\App;
 use App\Models\Footer;
 use Filament\Forms;
 use Filament\Forms\Components\Actions\Action;
@@ -21,6 +22,7 @@ class FooterResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-bars-3-bottom-left';
     protected static ?string $modelLabel = 'Pie de página';
     protected static ?string $pluralModelLabel = 'Pies de página';
+    protected static ?string $navigationGroup = App::FILAMENT_GROUP_LANDING;
 
     public static function form(Form $form): Form
     {

@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CountryResource\Pages;
 use App\Filament\Resources\CountryResource\RelationManagers;
+use App\Http\Clases\App;
 use App\Models\Country;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -22,6 +23,7 @@ class CountryResource extends Resource
     protected static ?string $modelLabel = 'País';
 
     protected static ?string $pluralModelLabel = 'Países';
+    protected static ?string $navigationGroup = App::FILAMENT_GROUP_LANDING;
 
     public static function form(Form $form): Form
     {

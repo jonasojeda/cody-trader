@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MedioPagoResource\Pages;
 use App\Filament\Resources\MedioPagoResource\RelationManagers;
+use App\Http\Clases\App;
 use App\Models\MedioPago;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -21,6 +22,7 @@ class MedioPagoResource extends Resource
     protected static ?string $modelLabel = 'Medio de Pago';
     protected static ?string $pluralModelLabel = 'Medios de Pago';
     protected static ?string $navigationLabel = 'Medios de Pago';
+    protected static ?string $navigationGroup = App::FILAMENT_GROUP_LANDING;
 
     public static function form(Form $form): Form
     {

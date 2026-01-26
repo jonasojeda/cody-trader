@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ReservationResource\Pages;
 use App\Filament\Resources\ReservationResource\RelationManagers;
+use App\Http\Clases\App;
 use App\Models\Reservation;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -21,6 +22,7 @@ class ReservationResource extends Resource
     protected static ?string $modelLabel = 'Reservación';
     protected static ?string $pluralModelLabel = 'Reservaciones';
     protected static ?string $navigationLabel = 'Reservaciones';
+    protected static ?string $navigationGroup = App::FILAMENT_GROUP_LANDING;
 
     public static function form(Form $form): Form
     {

@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\LearningResource\Pages;
 use App\Filament\Resources\LearningResource\RelationManagers;
+use App\Http\Clases\App;
 use App\Models\Learning;
 use Filament\Forms;
 use Filament\Forms\Components\Actions\Action;
@@ -22,6 +23,7 @@ class LearningResource extends Resource
 
     protected static ?string $modelLabel = 'Aprendizaje';
     protected static ?string $pluralModelLabel = 'Aprendizajes';
+    protected static ?string $navigationGroup = App::FILAMENT_GROUP_LANDING;
 
     public static function form(Form $form): Form
     {

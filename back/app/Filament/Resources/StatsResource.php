@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\StatsResource\Pages;
 use App\Filament\Resources\StatsResource\RelationManagers;
+use App\Http\Clases\App;
 use App\Models\Stats;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -24,6 +25,7 @@ class StatsResource extends Resource
     protected static ?string $modelLabel = 'Estadística';
 
     protected static ?string $pluralModelLabel = 'Estadísticas';
+    protected static ?string $navigationGroup = App::FILAMENT_GROUP_LANDING;
 
     public static function form(Form $form): Form
     {

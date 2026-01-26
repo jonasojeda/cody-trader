@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SlideResource\Pages;
 use App\Filament\Resources\SlideResource\RelationManagers;
+use App\Http\Clases\App;
 use App\Models\Slide;
 use Filament\Forms;
 use Filament\Forms\Components\Actions\Action;
@@ -22,6 +23,7 @@ class SlideResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $modelLabel = 'Slide';
     protected static ?string $pluralModelLabel = 'Slides';
+    protected static ?string $navigationGroup = App::FILAMENT_GROUP_LANDING;
 
     public static function form(Form $form): Form
     {

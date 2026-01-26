@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\MethodologyResource\Pages;
 use App\Filament\Resources\MethodologyResource\RelationManagers;
+use App\Http\Clases\App;
 use App\Models\Methodology;
 use Filament\Forms;
 use Filament\Forms\Components\Actions\Action;
@@ -22,6 +23,7 @@ class MethodologyResource extends Resource
 
     protected static ?string $modelLabel = 'Metodología';
     protected static ?string $pluralModelLabel = 'Metodologías';
+    protected static ?string $navigationGroup = App::FILAMENT_GROUP_LANDING;
 
     public static function form(Form $form): Form
     {

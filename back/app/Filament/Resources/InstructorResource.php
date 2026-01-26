@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\InstructorResource\Pages;
+use App\Http\Clases\App;
 use App\Models\Instructor;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -18,6 +19,7 @@ class InstructorResource extends Resource
 
     protected static ?string $modelLabel = 'Instructor';
     protected static ?string $pluralModelLabel = 'Instructores';
+    protected static ?string $navigationGroup = App::FILAMENT_GROUP_LANDING;
 
     public static function form(Form $form): Form
     {

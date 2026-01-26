@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CredentialResource\Pages;
 use App\Filament\Resources\CredentialResource\RelationManagers;
+use App\Http\Clases\App;
 use App\Models\Credential;
 use Filament\Forms;
 use Filament\Forms\Components\Actions\Action;
@@ -22,6 +23,7 @@ class CredentialResource extends Resource
 
     protected static ?string $modelLabel = 'Credencial';
     protected static ?string $pluralModelLabel = 'Credenciales';
+    protected static ?string $navigationGroup = App::FILAMENT_GROUP_LANDING;
 
     public static function form(Form $form): Form
     {

@@ -169,4 +169,7 @@ class App
         'CEDULA' => self::TIPO_DOCUMENTO_CEDULA,
         'SIN_DOCUMENTO' => self::TIPO_DOCUMENTO_SIN_DOCUMENTO,
     ];
+
+    const FILAMENT_GROUP_LANDING = 'Landing Page';
+    const FILAMENT_GROUP_CURSO = 'Curso';
 }
