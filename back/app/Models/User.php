@@ -45,8 +45,17 @@ class User extends Authenticatable implements FilamentUser
         'password' => 'hashed',
     ];
 
+    //Relaciones
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
-        return true;
+        if ($this->student()->exists()) {
+            return true;
+        }
+        return false;
     }
 }
