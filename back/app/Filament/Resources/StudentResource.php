@@ -36,7 +36,11 @@ class StudentResource extends Resource
                             ->label('Correo Electrónico')
                             ->email()
                             ->required()
-                            ->unique(table: 'users', column: 'email', ignoreRecord: true)
+                            ->unique(
+                                table: 'users',
+                                column: 'email',
+                                ignorable: fn ($record) => $record?->user
+                            )
                             ->maxLength(255),
                         Forms\Components\TextInput::make('user.password')
                             ->label('Contraseña')
