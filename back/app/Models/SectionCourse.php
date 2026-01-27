@@ -6,30 +6,30 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Course extends Model
+class SectionCourse extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'section_courses';
     protected $fillable = [
+        'course_id',
         'title',
-        'description',
-        'thumbnail',
     ];
 
-    //Relaciones
-    public function sectionCourses()
+    //Relaciones 
+    public function course()
     {
-        return $this->hasMany(SectionCourse::class);
+        return $this->belongsTo(Course::class);
     }
 
     //Funciones publicas
+
     public function obtenerDatos()
     {
         return [
             'id' => $this->id,
+            'course_id' => $this->course_id,
             'title' => $this->title,
-            'description' => $this->description,
-            'thumbnail' => $this->thumbnail,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
