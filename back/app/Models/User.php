@@ -7,12 +7,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    // use HasRoles;
+    use Notifiable;
+    use SoftDeletes;
+    use CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
@@ -44,6 +51,31 @@ class User extends Authenticatable implements FilamentUser
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //Funciones publicas
+    public function obtenerObjDatos(): array
+    {
+        return [
+            'id' => $this->id,
+            'username' => $this->username,
+            'email' => $this->email,
+            'verificacionEmail' => $this->email_verified_at,
+            'student' => $this->student?->obtenerDatos(),
+            'creado' => $this->created_at,
+        ];
+    }
+
+    public function obtenerObjDatosSesion(): array
+    {
+        return [
+            'id' => $this->id,
+            'username' => $this->username,
+            'email' => $this->email,
+            'verificacionEmail' => $this->email_verified_at,
+            'student' => $this->student?->obtenerDatos(),
+            'creado' => $this->created_at,
+        ];
+    }
 
     //Relaciones
     public function student()

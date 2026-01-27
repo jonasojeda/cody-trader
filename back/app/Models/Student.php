@@ -40,7 +40,7 @@ class Student extends Model
             'last_name' => $this->last_name,
             'phone' => $this->phone,
             'telegram_user' => $this->telegram_user,
-            'country_id' => $this->country_id ? $this->country->obtenerDatos() : null,
+            'country' => $this->country_id ? $this->country->obtenerDatos() : null,
             'registration_date' => $this->registration_date,
             'is_active' => $this->is_active,
         ];

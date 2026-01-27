@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AccessTokenController;
 use App\Http\Controllers\ReservationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,12 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+//Login 
+Route::get('tokens', [AccessTokenController::class, 'index']);
+Route::delete('tokens', [AccessTokenController::class, 'destroyAll']);
+Route::post('login', [AccessTokenController::class, 'store']);
+Route::post('logout', [AccessTokenController::class, 'destroy']);
 
 Route::apiResource('learnings', App\Http\Controllers\LearningController::class)
     ->only(['index', 'show'])
