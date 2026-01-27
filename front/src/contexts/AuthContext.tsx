@@ -1,48 +1,28 @@
 import { createContext, useContext, useState, ReactNode } from "react";
+import { api, Country } from "@/lib/api";
 
 interface User {
-  id: string;
+  id: number;
   email: string;
+  username: string | null;
   name: string;
   last_name: string;
   phone: string;
   telegram_user: string;
-  country_id: string;
+  country: Country | null;
+  registration_date?: string;
+  is_active?: number;
 }
 
 interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<boolean>;
-  logout: () => void;
+  login: (usernameOrEmail: string, password: string) => Promise<boolean>;
+  logout: () => Promise<void>;
   updateProfile: (data: Partial<User>) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-// Hardcoded credentials for testing
-const HARDCODED_USERS = [
-  {
-    email: "admin@test.com",
-    password: "admin123",
-    id: "1",
-    name: "Juan",
-    last_name: "Pérez",
-    phone: "+1234567890",
-    telegram_user: "@juanperez",
-    country_id: "MX",
-  },
-  {
-    email: "user@test.com",
-    password: "user123",
-    id: "2",
-    name: "María",
-    last_name: "García",
-    phone: "+0987654321",
-    telegram_user: "@mariagarcia",
-    country_id: "CO",
-  },
-];
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(() => {
@@ -50,23 +30,59 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     return saved ? JSON.parse(saved) : null;
   });
 
-  const login = async (email: string, password: string): Promise<boolean> => {
-    const foundUser = HARDCODED_USERS.find(
-      (u) => u.email === email && u.password === password
-    );
+  const login = async (usernameOrEmail: string, password: string): Promise<boolean> => {
+    try {
+      // Determine if input is email or username
+      const isEmail = usernameOrEmail.includes("@");
 
-    if (foundUser) {
-      const { password: _, ...userData } = foundUser;
-      setUser(userData);
-      localStorage.setItem("auth_user", JSON.stringify(userData));
-      return true;
+      const credentials = isEmail
+        ? { username: usernameOrEmail.split("@")[0], email: usernameOrEmail, password }
+        : { username: usernameOrEmail, password };
+
+      const response = await api.login(credentials);
+
+      if (response.accessToken && response.user) {
+        // Store the token
+        localStorage.setItem("auth_token", response.accessToken);
+
+        // Extract user data from response (data comes from student object)
+        const student = response.user.student;
+        const userData: User = {
+          id: response.user.id,
+          email: response.user.email,
+          username: response.user.username,
+          name: student?.name || "",
+          last_name: student?.last_name || "",
+          phone: student?.phone || "",
+          telegram_user: student?.telegram_user || "",
+          country: student?.country || null,
+          registration_date: student?.registration_date,
+          is_active: student?.is_active,
+        };
+
+        setUser(userData);
+        localStorage.setItem("auth_user", JSON.stringify(userData));
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.error("Login error:", error);
+      return false;
     }
-    return false;
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem("auth_user");
+  const logout = async () => {
+    try {
+      // Call API logout to invalidate the token
+      await api.logout();
+    } catch (error) {
+      console.error("Logout error:", error);
+    } finally {
+      // Clear local storage regardless of API result
+      setUser(null);
+      localStorage.removeItem("auth_user");
+      localStorage.removeItem("auth_token");
+    }
   };
 
   const updateProfile = (data: Partial<User>) => {

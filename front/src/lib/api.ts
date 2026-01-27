@@ -305,13 +305,35 @@ export const api = {
     fetchApi<PaginatedResponse<Stat>>("stats", {
       sinPaginar: true,
     }),
+
+  // Auth endpoints
+  login: (credentials: LoginCredentials) =>
+    fetchApi<LoginResponse>("login", {
+      method: "POST",
+      body: JSON.stringify(credentials),
+    }),
+
+  logout: () =>
+    fetchApi<{ message: string }>("logout", {
+      method: "POST",
+    }),
+
+  getTokens: () =>
+    fetchApi<AccessToken[]>("tokens", {
+      method: "GET",
+    }),
+
+  deleteAllTokens: () =>
+    fetchApi<{ message: string }>("tokens", {
+      method: "DELETE",
+    }),
 };
 
-export interface Stat {
-  id: number;
-  value: string;
-  label: string;
-  color: string;
+// Auth Interfaces
+export interface LoginCredentials {
+  username: string;
+  email?: string;
+  password: string;
 }
 
 export interface Country {
@@ -319,6 +341,48 @@ export interface Country {
   name: string;
   created_at: string;
   updated_at: string;
+}
+
+export interface Student {
+  id: number;
+  name: string;
+  last_name: string;
+  phone: string;
+  telegram_user: string;
+  country: Country;
+  registration_date: string;
+  is_active: number;
+}
+
+export interface LoginUser {
+  id: number;
+  username: string | null;
+  email: string;
+  verificacionEmail: string | null;
+  student: Student | null;
+  creado: string;
+}
+
+export interface LoginResponse {
+  tokenType: string;
+  accessToken: string;
+  user: LoginUser;
+}
+
+export interface AccessToken {
+  id: number;
+  name: string;
+  abilities: string[];
+  last_used_at: string | null;
+  created_at: string;
+  expires_at: string | null;
+}
+
+export interface Stat {
+  id: number;
+  value: string;
+  label: string;
+  color: string;
 }
 
 export interface CourseContentDescription {
