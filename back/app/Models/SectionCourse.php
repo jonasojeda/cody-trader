@@ -22,16 +22,20 @@ class SectionCourse extends Model
         return $this->belongsTo(Course::class);
     }
 
-    //Funciones publicas
+    public function lessonCourses()
+    {
+        return $this->hasMany(LessonCourse::class);
+    }
 
+    //Funciones publicas
     public function obtenerDatos()
     {
         return [
             'id' => $this->id,
-            'course_id' => $this->course_id,
             'title' => $this->title,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'lessons' => $this->lessonCourses->map(function ($lesson) {
+                return $lesson->obtenerDatos();
+            })->toArray(),
         ];
     }
 }

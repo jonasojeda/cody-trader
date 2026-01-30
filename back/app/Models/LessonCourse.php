@@ -33,11 +33,10 @@ class LessonCourse extends Model
     {
         return [
             'id' => $this->id,
-            'section_course_id' => $this->section_course_id,
             'title' => $this->title,
             'description' => $this->description,
-            'video_url' => $this->video_url,
-            'resources' => $this->resources,
+            'videoUrl' => $this->video_url,
+            'resources' => $this->resources ?? [],
         ];
     }
 }
