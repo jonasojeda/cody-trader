@@ -54,7 +54,7 @@ const COURSES_DATA: Course[] = [
             id: "l1",
             title: "¿Qué es el trading?",
             description: "En esta clase aprenderás los conceptos básicos del trading, cómo funcionan los mercados financieros y qué necesitas para comenzar tu carrera como trader.",
-            videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            videoUrl: "https://player.vimeo.com/video/76979871",
             resources: [
               { name: "Guía de inicio", url: "#", type: "pdf" },
               { name: "Glosario de términos", url: "#", type: "pdf" },
@@ -66,7 +66,7 @@ const COURSES_DATA: Course[] = [
             id: "l2",
             title: "Tipos de mercados",
             description: "Descubre los diferentes tipos de mercados: Forex, acciones, criptomonedas, futuros y más. Aprende las características de cada uno y cuál se adapta mejor a tu perfil.",
-            videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            videoUrl: "https://player.vimeo.com/video/375468729",
             resources: [
               { name: "Comparativa de mercados", url: "#", type: "pdf" },
             ],
@@ -91,7 +91,7 @@ const COURSES_DATA: Course[] = [
             id: "l4",
             title: "Velas japonesas",
             description: "Aprende a leer e interpretar los patrones de velas japonesas, una de las herramientas más importantes del análisis técnico.",
-            videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            videoUrl: "https://player.vimeo.com/video/148751763",
             resources: [
               { name: "Cheat sheet de velas", url: "#", type: "pdf" },
               { name: "Ejercicios prácticos", url: "#", type: "xlsx" },
@@ -103,7 +103,7 @@ const COURSES_DATA: Course[] = [
             id: "l5",
             title: "Soportes y resistencias",
             description: "Domina el concepto de soportes y resistencias, cómo identificarlos y usarlos para tomar mejores decisiones de trading.",
-            videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            videoUrl: "https://player.vimeo.com/video/824804225",
             resources: [],
             duration: "35 min",
             completed: false,
@@ -118,7 +118,7 @@ const COURSES_DATA: Course[] = [
             id: "l6",
             title: "Money management",
             description: "La gestión del capital es clave para sobrevivir en el trading. Aprende las reglas de oro para proteger tu cuenta.",
-            videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            videoUrl: "https://player.vimeo.com/video/517013853",
             resources: [
               { name: "Calculadora de riesgo", url: "#", type: "xlsx" },
             ],
@@ -263,10 +263,10 @@ export const CoursesSection = () => {
                 {selectedLesson.videoUrl && (
                   <div className="aspect-video rounded-lg overflow-hidden bg-muted">
                     <iframe
-                      src={selectedLesson.videoUrl}
+                      src={`${selectedLesson.videoUrl}${selectedLesson.videoUrl.includes('?') ? '&' : '?'}title=0&byline=0&portrait=0&badge=0`}
                       title={selectedLesson.title}
                       className="w-full h-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
                       allowFullScreen
                     />
                   </div>
