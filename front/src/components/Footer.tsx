@@ -169,7 +169,7 @@ export const Footer = () => {
           <div className="flex items-center gap-2">
             <span className="text-xs text-muted-foreground">Powered by</span>
             <a
-              href="https://teral.dev"
+              href="https://teral.com.ar"
               target="_blank"
               rel="noopener noreferrer"
               className="transition-opacity duration-300 opacity-40 hover:opacity-100"
